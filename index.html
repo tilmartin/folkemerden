@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- SEO -->
-    <title class="no">Folkemerden | Lukket oppdrett i sjø</title>
+    <title>Folkemerden | Lukket oppdrett i sjø</title>
     <meta name="description" content="Folkemerden er en patentert produksjonsenhet i termoplast, utviklet for lukket og semilukket sjøbasert oppdrett med kontrollert vanninntak, slamoppsamling og ekstra rømmingssikring.">
     <link rel="canonical" href="https://folkemerden.no/">
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://folkemerden.no/">
     <meta property="og:title" content="Folkemerden | Lukket oppdrett i sjø">
@@ -18,16 +16,12 @@
     <meta property="og:locale" content="nb_NO">
     <meta property="og:site_name" content="Folkemerden">
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Folkemerden | Lukket oppdrett i sjø">
     <meta name="twitter:description" content="Patentert produksjonsenhet i termoplast for lukket sjøbasert oppdrett.">
     <meta name="twitter:image" content="https://folkemerden.no/assets/folkemerd-closed.png">
 
-    <!-- Tailwind (CDN – bør erstattes med lokal build før høy trafikk) -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -37,11 +31,13 @@
             --bg-1:      #030e1a;
             --bg-2:      #061624;
             --bg-3:      #0b1f30;
+            --bg-light:  #f4f8fb;
             --border:    #143248;
-            --border-a:  rgba(2,132,199,0.22);
-            --accent:    #0284c7;
-            --accent-hi: #38bdf8;
-            --accent-bg: rgba(2,132,199,0.07);
+            --border-a:  rgba(14,165,183,0.22);
+            --accent:    #0ea5b7;
+            --accent-2:  #2dd4bf;
+            --accent-hi: #67e8f9;
+            --accent-bg: rgba(14,165,183,0.08);
             --text-1:    #edf4f9;
             --text-2:    #8ab0c8;
             --text-3:    #4a6a82;
@@ -87,7 +83,7 @@
             font-weight: 700; font-size: .875rem;
             background: var(--accent); color: #fff;
             transition: all .2s;
-            box-shadow: 0 0 28px rgba(2,132,199,.22);
+            box-shadow: 0 0 28px rgba(14,165,183,.28);
         }
         .btn-p:hover { background: var(--accent-hi); color: var(--bg-1); transform: translateY(-1px); }
 
@@ -123,14 +119,97 @@
         }
         .lang-btn.active { background: var(--bg-3); border-color: var(--border); color: var(--text-1); }
 
-        /* ── Hero grid overlay ── */
-        .hero-grid {
-            background-image:
-                linear-gradient(var(--border) 1px, transparent 1px),
-                linear-gradient(90deg, var(--border) 1px, transparent 1px);
-            background-size: 52px 52px;
-            opacity: .25;
+        /* ── Light sections ── */
+        .light-sec {
+            background: var(--bg-light);
+            --text-1:    #0f172a;
+            --text-2:    #334155;
+            --text-3:    #64748b;
+            --bg-3:      #ffffff;
+            --bg-2:      #e8f2f8;
+            --border:    #cde3ef;
+            --border-a:  rgba(14,165,183,0.22);
+            --accent-bg: rgba(14,165,183,0.1);
+            --accent-hi: #0284c7;
         }
+        .light-sec .text-white { color: #0f172a !important; }
+        .light-sec .card { background: #ffffff; border-color: #cde3ef; box-shadow: 0 1px 4px rgba(14,50,80,.06); }
+        .light-sec .card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(14,165,183,.12); }
+        .light-sec .img-frame { background: #e8f2f8; border-color: #cde3ef; }
+
+        /* ── Hero: ocean background ── */
+        .hero-ocean-bg {
+            background:
+                radial-gradient(ellipse 120% 70% at 65% 20%, rgba(14,165,183,.10) 0%, transparent 55%),
+                radial-gradient(ellipse 80% 100% at 15% 65%, rgba(14,165,183,.06) 0%, transparent 55%),
+                radial-gradient(ellipse 100% 50% at 50% 115%, rgba(2,30,50,.55) 0%, transparent 50%);
+        }
+        @keyframes hero-shimmer {
+            0%, 100% { opacity: .5; transform: scale(1) translateY(0); }
+            50%       { opacity: .85; transform: scale(1.08) translateY(-15px); }
+        }
+        .hero-shimmer {
+            background: radial-gradient(ellipse 65% 45% at 70% 30%, rgba(14,165,183,.09) 0%, transparent 55%);
+            animation: hero-shimmer 9s ease-in-out infinite;
+        }
+
+        /* ── Floating model ── */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-11px); }
+        }
+        .model-float { animation: float 7.5s ease-in-out infinite; }
+
+        /* ── Callout badges ── */
+        @keyframes badge-in {
+            from { opacity: 0; transform: translateY(7px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .callout-badge {
+            position: absolute;
+            z-index: 20;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background: rgba(3,14,26,.80);
+            border: 1px solid rgba(14,165,183,.32);
+            border-radius: 12px;
+            padding: 9px 14px;
+            min-width: 136px;
+            opacity: 0;
+            animation: badge-in .6s ease forwards;
+        }
+        .cbadge-title {
+            font-size: .68rem; font-weight: 700;
+            color: var(--accent); text-transform: uppercase; letter-spacing: .07em;
+        }
+        .cbadge-val {
+            font-size: .78rem; font-weight: 600; color: var(--text-1); margin-top: 2px;
+        }
+        .cbadge-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: var(--accent-2);
+            display: inline-block; margin-right: 5px; vertical-align: middle;
+            box-shadow: 0 0 7px rgba(45,212,191,.65);
+            flex-shrink: 0;
+        }
+
+        /* ── Stats glass panel ── */
+        .stats-glass {
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            background: rgba(3,14,26,.68);
+            border: 1px solid rgba(14,165,183,.18);
+            border-radius: 20px;
+            padding: 1.25rem 2rem;
+        }
+        .stat-div {
+            width: 1px; background: var(--border); opacity: .6;
+            align-self: stretch;
+        }
+
+        /* ── Stat block ── */
+        .stat .val { font-size: 1.9rem; font-weight: 900; color: var(--text-1); line-height: 1; }
+        .stat .sub { font-size: .72rem; color: var(--text-3); margin-top: 4px; }
 
         /* ── Process steps ── */
         .step-line {
@@ -141,9 +220,9 @@
 
         /* ── Pulse dot ── */
         @keyframes pulse-ring {
-            0%   { box-shadow: 0 0 0 0   rgba(2,132,199,.5); }
-            70%  { box-shadow: 0 0 0 10px rgba(2,132,199,0); }
-            100% { box-shadow: 0 0 0 0   rgba(2,132,199,0); }
+            0%   { box-shadow: 0 0 0 0   rgba(14,165,183,.5); }
+            70%  { box-shadow: 0 0 0 10px rgba(14,165,183,0); }
+            100% { box-shadow: 0 0 0 0   rgba(14,165,183,0); }
         }
         .dot-active { animation: pulse-ring 2s infinite; }
 
@@ -154,9 +233,14 @@
         /* ── Image frame ── */
         .img-frame { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-3); }
 
-        /* ── Stat block ── */
-        .stat .val { font-size: 1.9rem; font-weight: 900; color: var(--text-1); line-height: 1; }
-        .stat .sub { font-size: .72rem; color: var(--text-3); margin-top: 4px; }
+        /* ── prefers-reduced-motion ── */
+        @media (prefers-reduced-motion: reduce) {
+            .model-float   { animation: none !important; }
+            .callout-badge { animation: none !important; opacity: 1 !important; }
+            .dot-active    { animation: none !important; }
+            .hero-shimmer  { animation: none !important; }
+            .fade-in       { opacity: 1 !important; transform: none !important; transition: none !important; }
+        }
 
         /* Scrollbar */
         ::-webkit-scrollbar { width: 4px; }
@@ -211,96 +295,158 @@
 <main id="main">
 
 <!-- ─── 1. HERO ─────────────────────────────────────────────── -->
-<section id="topp" class="relative overflow-hidden min-h-screen flex items-center" style="background:var(--bg-1);">
-    <div class="hero-grid absolute inset-0 pointer-events-none" aria-hidden="true"></div>
-    <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-         style="background:radial-gradient(ellipse 75% 60% at 65% 50%, rgba(2,132,199,.07) 0%, transparent 70%);"></div>
+<section id="topp" class="relative overflow-hidden min-h-screen flex flex-col" style="background:var(--bg-1);">
+    <div class="hero-ocean-bg absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div class="hero-shimmer absolute inset-0 pointer-events-none" aria-hidden="true"></div>
 
-    <div class="relative max-w-7xl mx-auto px-6 w-full py-36">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
+    <!-- Main content -->
+    <div class="relative flex-1 flex items-center">
+        <div class="max-w-7xl mx-auto px-6 w-full py-32">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
 
-            <!-- Text column -->
-            <div>
-                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-8"
-                     style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent);">
-                    <span class="w-1.5 h-1.5 rounded-full inline-block" style="background:var(--green);"></span>
-                    Patent 347371 &mdash; Havklu AS
-                </div>
-
-                <h1 class="h-hero text-white mb-6">
-                    <span class="no">Lukket oppdrett i sjø &mdash; med realistisk byggekostnad</span>
-                    <span class="en">Closed sea-based salmon farming &mdash; at a realistic construction cost</span>
-                </h1>
-
-                <p class="text-lg leading-relaxed mb-5" style="color:var(--text-2); max-width:520px;">
-                    <span class="no">Folkemerden er en patentert produksjonsenhet i termoplast, utviklet for å møte kravene til lukket teknologi: tett barriere, kontrollert vanninntak, slamoppsamling og ekstra rømmingssikring.</span>
-                    <span class="en">Folkemerden is a patented thermoplastic production unit designed for closed-containment requirements: a tight barrier, controlled water intake, sludge collection and enhanced escape prevention.</span>
-                </p>
-
-                <p class="text-sm font-semibold mb-10" style="color:var(--text-2);">
-                    <span class="no">Havklu AS søker industriell partner for prosjektering, verifikasjon og første pilot.</span>
-                    <span class="en">Havklu AS is seeking an industrial partner for engineering, verification and first pilot deployment.</span>
-                </p>
-
-                <div class="flex flex-wrap gap-3 mb-16">
-                    <a href="#kontakt" class="btn-p">
-                        <span class="no">Be om teknisk brief</span>
-                        <span class="en">Request technical brief</span>
-                    </a>
-                    <a href="#losningen" class="btn-s">
-                        <span class="no">Se løsningen &darr;</span>
-                        <span class="en">See the solution &darr;</span>
-                    </a>
-                </div>
-
-                <!-- Stats row -->
-                <div class="flex flex-wrap gap-8 pt-8" style="border-top:1px solid var(--border);">
-                    <div class="stat">
-                        <div class="val">25 000 <span style="font-size:1.1rem">m³</span></div>
-                        <div class="sub">
-                            <span class="no">referansevolum</span>
-                            <span class="en">reference volume</span>
-                        </div>
+                <!-- Text column -->
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-8"
+                         style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent);">
+                        <span class="w-1.5 h-1.5 rounded-full inline-block" style="background:var(--green);"></span>
+                        Patent 347371 &mdash; Havklu AS
                     </div>
-                    <div class="stat">
-                        <div class="val">~1 200 <span style="font-size:1.1rem">t</span></div>
-                        <div class="sub">
-                            <span class="no">estimert biomasse</span>
-                            <span class="en">estimated biomass</span>
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <div class="val">50–60 <span style="font-size:1.1rem">MNOK</span></div>
-                        <div class="sub">
-                            <span class="no">estimert konstruksjonskostnad, ekskl. utstyr</span>
-                            <span class="en">estimated construction cost, excl. equipment</span>
-                        </div>
-                    </div>
-                    <div class="stat">
-                        <div class="val">50 <span style="font-size:1.1rem">år</span></div>
-                        <div class="sub">
-                            <span class="no">designlevetid ved inspeksjon/renovasjon</span>
-                            <span class="en">design lifespan with inspection/renovation</span>
-                        </div>
+
+                    <h1 class="h-hero text-white mb-6">
+                        <span class="no">Lukket oppdrett i sjø &mdash; med realistisk byggekostnad</span>
+                        <span class="en">Closed sea-based salmon farming &mdash; at a realistic construction cost</span>
+                    </h1>
+
+                    <p class="text-lg leading-relaxed mb-5" style="color:var(--text-2); max-width:520px;">
+                        <span class="no">Folkemerden er en patentert produksjonsenhet i termoplast, utviklet for å møte kravene til lukket teknologi: tett barriere, kontrollert vanninntak, slamoppsamling og ekstra rømmingssikring.</span>
+                        <span class="en">Folkemerden is a patented thermoplastic production unit designed for closed-containment requirements: a tight barrier, controlled water intake, sludge collection and enhanced escape prevention.</span>
+                    </p>
+
+                    <p class="text-sm font-semibold mb-10" style="color:var(--text-2);">
+                        <span class="no">Havklu AS søker industriell partner for prosjektering, verifikasjon og første pilot.</span>
+                        <span class="en">Havklu AS is seeking an industrial partner for engineering, verification and first pilot deployment.</span>
+                    </p>
+
+                    <div class="flex flex-wrap gap-3">
+                        <a href="#kontakt" class="btn-p">
+                            <span class="no">Be om teknisk brief</span>
+                            <span class="en">Request technical brief</span>
+                        </a>
+                        <a href="#losningen" class="btn-s">
+                            <span class="no">Se løsningen &darr;</span>
+                            <span class="en">See the solution &darr;</span>
+                        </a>
                     </div>
                 </div>
+
+                <!-- Model column with callouts -->
+                <div class="relative flex items-center justify-center py-16 lg:py-20">
+                    <!-- Model glow -->
+                    <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+                         style="background:radial-gradient(ellipse 75% 70% at 50% 50%, rgba(14,165,183,.17) 0%, transparent 65%);"></div>
+
+                    <!-- Callout: Tett barriere (top-left) -->
+                    <div class="callout-badge hidden lg:block" style="top:8%;left:0;animation-delay:.8s;">
+                        <div class="flex items-center mb-1">
+                            <span class="cbadge-dot"></span>
+                            <span class="cbadge-title no">Tett barriere</span>
+                            <span class="cbadge-title en">Tight barrier</span>
+                        </div>
+                        <div class="cbadge-val">20 m</div>
+                    </div>
+
+                    <!-- Callout: Rømmingssikring (top-right) -->
+                    <div class="callout-badge hidden lg:block" style="top:8%;right:0;animation-delay:1.1s;">
+                        <div class="flex items-center mb-1">
+                            <span class="cbadge-dot"></span>
+                            <span class="cbadge-title no">Rømmingssikring</span>
+                            <span class="cbadge-title en">Escape prevention</span>
+                        </div>
+                        <div class="cbadge-val">
+                            <span class="no">Stiv PE100-konstruksjon</span>
+                            <span class="en">Rigid PE100 structure</span>
+                        </div>
+                    </div>
+
+                    <!-- Model image -->
+                    <img src="assets/folkemerd-closed.png"
+                         alt="Folkemerden lukket variant — sylindrisk produksjonsenhet i termoplast, 3D-modell med trakt i bunn for slamoppsamling"
+                         class="model-float relative z-10 w-full max-w-sm"
+                         style="filter:drop-shadow(0 0 50px rgba(14,165,183,.22));">
+
+                    <!-- Callout: Kontrollert inntak (bottom-left) -->
+                    <div class="callout-badge hidden lg:block" style="bottom:22%;left:0;animation-delay:1.4s;">
+                        <div class="flex items-center mb-1">
+                            <span class="cbadge-dot"></span>
+                            <span class="cbadge-title no">Kontrollert inntak</span>
+                            <span class="cbadge-title en">Controlled intake</span>
+                        </div>
+                        <div class="cbadge-val">
+                            <span class="no">Vanninntak og -uttak</span>
+                            <span class="en">Water in &amp; out</span>
+                        </div>
+                    </div>
+
+                    <!-- Callout: Slamoppsamling (bottom-right) -->
+                    <div class="callout-badge hidden lg:block" style="bottom:7%;right:0;animation-delay:1.7s;">
+                        <div class="flex items-center mb-1">
+                            <span class="cbadge-dot"></span>
+                            <span class="cbadge-title no">Slamoppsamling</span>
+                            <span class="cbadge-title en">Sludge collection</span>
+                        </div>
+                        <div class="cbadge-val">
+                            <span class="no">Trakt og pumpeløsning</span>
+                            <span class="en">Funnel &amp; pump</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+        </div>
+    </div>
 
-            <!-- Model image -->
-            <div class="relative flex items-center justify-center lg:justify-end">
-                <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
-                     style="background:radial-gradient(ellipse at center, rgba(2,132,199,.13) 0%, transparent 70%);"></div>
-                <img src="assets/folkemerd-closed.png"
-                     alt="Folkemerden lukket variant — sylindrisk produksjonsenhet i termoplast, 3D-modell med trakt i bunn for slamoppsamling"
-                     class="relative z-10 w-full max-w-md"
-                     style="filter:drop-shadow(0 0 40px rgba(2,132,199,.18));">
+    <!-- Glassmorphism stats bar -->
+    <div class="relative max-w-7xl mx-auto px-6 w-full pb-10">
+        <div class="stats-glass">
+            <div class="flex flex-wrap items-center justify-around gap-5">
+                <div class="stat text-center">
+                    <div class="val">25 000 <span style="font-size:1.1rem">m³</span></div>
+                    <div class="sub">
+                        <span class="no">referansevolum</span>
+                        <span class="en">reference volume</span>
+                    </div>
+                </div>
+                <div class="stat-div hidden sm:block"></div>
+                <div class="stat text-center">
+                    <div class="val">~1 200 <span style="font-size:1.1rem">t</span></div>
+                    <div class="sub">
+                        <span class="no">estimert biomasse</span>
+                        <span class="en">estimated biomass</span>
+                    </div>
+                </div>
+                <div class="stat-div hidden sm:block"></div>
+                <div class="stat text-center">
+                    <div class="val">50–60 <span style="font-size:1.1rem">MNOK</span></div>
+                    <div class="sub">
+                        <span class="no">estimert konstruksjonskostnad, ekskl. utstyr</span>
+                        <span class="en">estimated construction cost, excl. equipment</span>
+                    </div>
+                </div>
+                <div class="stat-div hidden sm:block"></div>
+                <div class="stat text-center">
+                    <div class="val">50 <span style="font-size:1.1rem">år</span></div>
+                    <div class="sub">
+                        <span class="no">designlevetid ved inspeksjon/renovasjon</span>
+                        <span class="en">design lifespan with inspection/renovation</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ─── 2. HVORFOR NÅ ───────────────────────────────────────── -->
-<section id="hvorfor-na" class="py-28 px-6 fade-in" style="background:var(--bg-2);">
+<!-- ─── 2. HVORFOR NÅ ── (light) ─────────────────────────────── -->
+<section id="hvorfor-na" class="light-sec py-28 px-6 fade-in">
     <div class="max-w-7xl mx-auto">
         <div class="max-w-2xl mx-auto text-center mb-14">
             <span class="label mb-3">
@@ -357,8 +503,8 @@
     </div>
 </section>
 
-<!-- ─── 3. UTFORDRINGEN ─────────────────────────────────────── -->
-<section id="utfordringen" class="py-28 px-6 fade-in" style="background:var(--bg-1);">
+<!-- ─── 3. UTFORDRINGEN ── (light) ───────────────────────────── -->
+<section id="utfordringen" class="light-sec py-28 px-6 fade-in" style="background:#eaf3f9;">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-14">
             <span class="label mb-3">
@@ -379,8 +525,8 @@
                     <span class="no">Lakselus</span><span class="en">Sea lice</span>
                 </h3>
                 <p class="text-sm leading-relaxed" style="color:var(--text-2);">
-                    <span class="no">Lakselusen lever ned til ca. 12 m dyp. En fysisk tett barriere ned til 20 m er utviklet for å hindre inntak av egg og frittsvømmende lusestadier.</span>
-                    <span class="en">Sea lice inhabit depths down to approximately 12m. A physically tight barrier to 20m depth is designed to prevent intake of eggs and free-swimming lice stages.</span>
+                    <span class="no">Lakselus og frittsvømmende stadier finnes typisk høyest i vannsøylen, men dybdefordeling varierer med lokalitet og forhold. En tett fysisk barriere ned til 20 m er utviklet for å redusere risikoen for inntak av frittsvømmende lusestadier.</span>
+                    <span class="en">Sea lice and free-swimming lice stages are typically found highest in the water column, but depth distribution varies by site and conditions. A tight physical barrier to 20 m depth is designed to reduce the risk of intake of free-swimming lice stages.</span>
                 </p>
             </div>
 
@@ -426,8 +572,8 @@
     </div>
 </section>
 
-<!-- ─── 4. LØSNINGEN ────────────────────────────────────────── -->
-<section id="losningen" class="py-28 px-6 fade-in" style="background:var(--bg-2);">
+<!-- ─── 4. LØSNINGEN ── (dark) ───────────────────────────────── -->
+<section id="losningen" class="py-28 px-6 fade-in" style="background:var(--bg-1);">
     <div class="max-w-7xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -439,8 +585,8 @@
                     <span class="en">Thermoplastic.<br>Rigid construction.<br>Two variants.</span>
                 </h2>
                 <p class="text-lg leading-relaxed mb-7" style="color:var(--text-2);">
-                    <span class="no">Folkemerden er en sylindrisk produksjonsenhet bygget av PE100-termoplast &mdash; sveiset etter NS 416 og designet etter NS9415. To varianter kan tilpasses lokalitet og krav.</span>
-                    <span class="en">Folkemerden is a cylindrical production unit built from PE100 thermoplastic &mdash; welded to NS 416 and designed to NS9415. Two variants can be adapted to site conditions and requirements.</span>
+                    <span class="no">Folkemerden er en sylindrisk produksjonsenhet bygget av PE100-termoplast &mdash; utviklet for å kunne prosjekteres, sveises og kontrolleres etter relevante norske standarder. To varianter kan tilpasses lokalitet og krav.</span>
+                    <span class="en">Folkemerden is a cylindrical production unit built from PE100 thermoplastic &mdash; developed to be engineerable, weldable and inspectable to relevant Norwegian standards. Two variants can be adapted to site conditions and requirements.</span>
                 </p>
 
                 <div class="space-y-4 mb-8">
@@ -542,8 +688,8 @@
     </div>
 </section>
 
-<!-- ─── 5. DESIGNET FOR VERIFIKASJON ───────────────────────── -->
-<section id="verifikasjon" class="py-28 px-6 fade-in" style="background:var(--bg-1);">
+<!-- ─── 5. DESIGNET FOR VERIFIKASJON ── (dark) ──────────────── -->
+<section id="verifikasjon" class="py-28 px-6 fade-in" style="background:var(--bg-2);">
     <div class="max-w-5xl mx-auto">
         <div class="text-center mb-14">
             <span class="label mb-3">
@@ -560,7 +706,6 @@
             </p>
         </div>
 
-        <!-- Process steps -->
         <div class="relative">
             <div class="step-line hidden md:block" aria-hidden="true"></div>
             <div class="grid md:grid-cols-5 gap-4 text-center">
@@ -624,13 +769,14 @@
                         <span class="en">Serial production and commercial operation</span>
                     </p>
                 </div>
+
             </div>
         </div>
     </div>
 </section>
 
-<!-- ─── 6. KOSTNADSPOSISJON ─────────────────────────────────── -->
-<section id="kostnad" class="py-28 px-6 fade-in" style="background:var(--bg-2);">
+<!-- ─── 6. KOSTNADSPOSISJON ── (light) ───────────────────────── -->
+<section id="kostnad" class="light-sec py-28 px-6 fade-in">
     <div class="max-w-5xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -652,7 +798,7 @@
             </div>
 
             <div class="space-y-4">
-                <div class="rounded-2xl p-8" style="background:var(--bg-3); border:1px solid var(--border);">
+                <div class="rounded-2xl p-8" style="background:var(--bg-3); border:1px solid var(--border); box-shadow:0 2px 12px rgba(14,50,80,.07);">
                     <div class="text-xs font-semibold mb-2" style="color:var(--text-3);">
                         <span class="no">Referansemodell — estimert konstruksjonskostnad</span>
                         <span class="en">Reference model — estimated construction cost</span>
@@ -689,7 +835,7 @@
     </div>
 </section>
 
-<!-- ─── 7. PILOTCASE ────────────────────────────────────────── -->
+<!-- ─── 7. PILOTCASE ── (dark) ───────────────────────────────── -->
 <section id="pilot" class="py-28 px-6 fade-in" style="background:var(--bg-1);">
     <div class="max-w-5xl mx-auto">
         <div class="text-center mb-12">
@@ -761,7 +907,7 @@
     </div>
 </section>
 
-<!-- ─── 8. FORTRINN ─────────────────────────────────────────── -->
+<!-- ─── 8. FORTRINN ── (dark) ────────────────────────────────── -->
 <section id="fortrinn" class="py-28 px-6 fade-in" style="background:var(--bg-2);">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-14">
@@ -852,8 +998,8 @@
     </div>
 </section>
 
-<!-- ─── 9. OM HAVKLU ────────────────────────────────────────── -->
-<section id="om-havklu" class="py-28 px-6 fade-in" style="background:var(--bg-1);">
+<!-- ─── 9. OM HAVKLU ── (light) ──────────────────────────────── -->
+<section id="om-havklu" class="light-sec py-28 px-6 fade-in">
     <div class="max-w-7xl mx-auto">
         <div class="grid lg:grid-cols-2 gap-16 items-start">
             <div>
@@ -874,14 +1020,14 @@
                 </p>
                 <div class="flex flex-wrap gap-3">
                     <span class="rounded-xl px-4 py-2 text-sm font-semibold"
-                          style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent-hi);">Patent 347371</span>
+                          style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent);">Patent 347371</span>
                     <span class="rounded-xl px-4 py-2 text-sm font-semibold"
-                          style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent-hi);">
+                          style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent);">
                         <span class="no">4 statlige utviklingskonsesjoner (forgjenger)</span>
                         <span class="en">4 gov. development concessions (predecessor)</span>
                     </span>
                     <span class="rounded-xl px-4 py-2 text-sm font-semibold"
-                          style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent-hi);">
+                          style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent);">
                         <span class="no">10+ år i utvikling</span><span class="en">10+ years in development</span>
                     </span>
                 </div>
@@ -889,7 +1035,7 @@
 
             <div class="card" style="background:var(--bg-2);">
                 <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-xl font-black mb-6"
-                     style="background:var(--accent); color:var(--bg-1);">OK</div>
+                     style="background:var(--accent); color:#fff;">OK</div>
                 <h3 class="text-2xl font-bold text-white mb-1">Olav Klungreseth</h3>
                 <p class="text-sm font-semibold mb-5" style="color:var(--accent);">
                     <span class="no">Sivilingeniør &mdash; Styreleder, Havklu AS</span>
@@ -904,9 +1050,11 @@
     </div>
 </section>
 
-<!-- ─── 10. PARTNER CTA ─────────────────────────────────────── -->
-<section id="partner" class="py-28 px-6 fade-in" style="background:linear-gradient(160deg, #061624 0%, var(--bg-1) 100%);">
-    <div class="max-w-3xl mx-auto text-center">
+<!-- ─── 10. PARTNER CTA ── (dark) ────────────────────────────── -->
+<section id="partner" class="py-28 px-6 fade-in" style="background:linear-gradient(160deg, #041420 0%, var(--bg-1) 70%); position:relative; overflow:hidden;">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+         style="background:radial-gradient(ellipse 80% 60% at 50% 0%, rgba(14,165,183,.08), transparent 60%);"></div>
+    <div class="max-w-3xl mx-auto text-center relative">
         <span class="label mb-4">
             <span class="no">Bli vår partner</span><span class="en">Become our partner</span>
         </span>
@@ -931,7 +1079,7 @@
     </div>
 </section>
 
-<!-- ─── 11. KONTAKT ─────────────────────────────────────────── -->
+<!-- ─── 11. KONTAKT ── (dark) ────────────────────────────────── -->
 <section id="kontakt" class="py-28 px-6 fade-in" style="background:var(--bg-2);">
     <div class="max-w-xl mx-auto">
         <div class="text-center mb-10">
@@ -951,7 +1099,7 @@
         <div class="rounded-2xl p-8" style="background:var(--bg-3); border:1px solid var(--border);">
             <div class="flex items-center gap-4 mb-7 pb-7" style="border-bottom:1px solid var(--border);">
                 <div class="w-14 h-14 rounded-xl flex items-center justify-center text-xl font-black flex-shrink-0"
-                     style="background:var(--accent); color:var(--bg-1);">OK</div>
+                     style="background:var(--accent); color:#fff;">OK</div>
                 <div>
                     <div class="font-bold text-white text-lg">Olav Klungreseth</div>
                     <div class="text-sm font-semibold" style="color:var(--accent);">
@@ -1015,7 +1163,6 @@
 </footer>
 
 <script>
-    // Language toggle
     function setLang(lang) {
         document.documentElement.lang = lang;
         document.getElementById('btn-no').classList.toggle('active', lang === 'no');
@@ -1024,7 +1171,6 @@
         document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
     }
 
-    // Scroll fade-in
     const obs = new IntersectionObserver(entries => {
         entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
     }, { threshold: 0.08 });
