@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /CLAIMS.md
+
+Sitemap: https://folkemerden.no/sitemap.xml

@@ -1,2 +1,17 @@
+# Interne arbeidsfiler — skal ikke publiseres
 _pptx_extracted/
+.claude/
 pp_temp.zip
+
+# Office-filer
+*.pptx
+*.ppt
+*.zip
+*.mhtml
+
+# Gamle ressurser
+logo gammel.png
+
+# OS
+.DS_Store
+Thumbs.db

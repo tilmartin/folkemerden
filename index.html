@@ -3,660 +3,1010 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Folkemerden — Havklu AS</title>
-    <meta name="description" content="Patentert lukket laksemerd i termoplast. Løser lakselus, sykdom, rømning og forurensning i én konstruksjon.">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        * { box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #04111e; color: #f1f5f9; }
 
+    <!-- SEO -->
+    <title class="no">Folkemerden | Lukket oppdrett i sjø</title>
+    <meta name="description" content="Folkemerden er en patentert produksjonsenhet i termoplast, utviklet for lukket og semilukket sjøbasert oppdrett med kontrollert vanninntak, slamoppsamling og ekstra rømmingssikring.">
+    <link rel="canonical" href="https://folkemerden.no/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://folkemerden.no/">
+    <meta property="og:title" content="Folkemerden | Lukket oppdrett i sjø">
+    <meta property="og:description" content="Patentert produksjonsenhet i termoplast for lukket sjøbasert oppdrett. Havklu AS søker industriell partner for prosjektering, verifikasjon og første pilot.">
+    <meta property="og:image" content="https://folkemerden.no/assets/folkemerd-closed.png">
+    <meta property="og:locale" content="nb_NO">
+    <meta property="og:site_name" content="Folkemerden">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Folkemerden | Lukket oppdrett i sjø">
+    <meta name="twitter:description" content="Patentert produksjonsenhet i termoplast for lukket sjøbasert oppdrett.">
+    <meta name="twitter:image" content="https://folkemerden.no/assets/folkemerd-closed.png">
+
+    <!-- Tailwind (CDN – bør erstattes med lokal build før høy trafikk) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-1:      #030e1a;
+            --bg-2:      #061624;
+            --bg-3:      #0b1f30;
+            --border:    #143248;
+            --border-a:  rgba(2,132,199,0.22);
+            --accent:    #0284c7;
+            --accent-hi: #38bdf8;
+            --accent-bg: rgba(2,132,199,0.07);
+            --text-1:    #edf4f9;
+            --text-2:    #8ab0c8;
+            --text-3:    #4a6a82;
+            --green:     #10b981;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-1);
+            color: var(--text-1);
+            line-height: 1.65;
+        }
+
+        /* ── Language ── */
         html[lang="en"] .no { display: none !important; }
         html[lang="no"] .en { display: none !important; }
 
-        .hero-bg {
-            background-image: linear-gradient(135deg, rgba(4,17,30,0.95) 0%, rgba(4,17,30,0.75) 100%), url('assets/hero.jpeg');
-            background-size: cover;
-            background-position: center;
+        /* ── Skip link ── */
+        .skip-link {
+            position: absolute; top: -60px; left: 1rem;
+            padding: 8px 16px; background: var(--accent); color: #fff;
+            border-radius: 0 0 8px 8px; font-size: .85rem; font-weight: 600;
+            z-index: 200; transition: top .2s;
+        }
+        .skip-link:focus { top: 0; }
+
+        /* ── Typography ── */
+        .h-hero    { font-size: clamp(2.1rem, 5vw, 4.4rem); font-weight: 900; line-height: 1.05; }
+        .h-section { font-size: clamp(1.7rem, 3.5vw, 2.75rem); font-weight: 800; line-height: 1.1; }
+        .label {
+            display: block;
+            font-size: .7rem; font-weight: 700;
+            letter-spacing: .1em; text-transform: uppercase;
+            color: var(--accent);
         }
 
-        html { scroll-behavior: smooth; }
+        /* ── Buttons ── */
+        .btn-p {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 13px 26px; border-radius: 50px;
+            font-weight: 700; font-size: .875rem;
+            background: var(--accent); color: #fff;
+            transition: all .2s;
+            box-shadow: 0 0 28px rgba(2,132,199,.22);
+        }
+        .btn-p:hover { background: var(--accent-hi); color: var(--bg-1); transform: translateY(-1px); }
 
-        .card-hover {
-            border: 1px solid #1a3557;
-            transition: border-color 0.25s, transform 0.25s;
+        .btn-s {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 26px; border-radius: 50px;
+            font-weight: 600; font-size: .875rem;
+            border: 1px solid var(--border); color: var(--text-1);
+            transition: all .2s;
         }
-        .card-hover:hover {
-            border-color: #0ea5e9;
-            transform: translateY(-2px);
+        .btn-s:hover { border-color: var(--accent); color: var(--accent-hi); }
+
+        /* ── Cards ── */
+        .card {
+            background: var(--bg-3); border: 1px solid var(--border);
+            border-radius: 16px; padding: 1.4rem;
+            transition: border-color .2s, transform .2s;
+        }
+        .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+        /* ── Nav ── */
+        .nav-glass {
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            background: rgba(3,14,26,.88);
+            border-bottom: 1px solid var(--border);
+        }
+        .lang-btn {
+            padding: 4px 10px; border-radius: 6px;
+            font-size: .75rem; font-weight: 600;
+            color: var(--text-2); border: 1px solid transparent;
+            transition: all .2s; cursor: pointer; background: none;
+        }
+        .lang-btn.active { background: var(--bg-3); border-color: var(--border); color: var(--text-1); }
+
+        /* ── Hero grid overlay ── */
+        .hero-grid {
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 52px 52px;
+            opacity: .25;
         }
 
-        .btn-lang {
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transition: all 0.2s;
-            color: #94a3b8;
-        }
-        .btn-lang.active {
-            background: #1a3557;
-            color: #f1f5f9;
+        /* ── Process steps ── */
+        .step-line {
+            position: absolute; top: 23px; left: calc(10% + 26px);
+            width: calc(80% - 52px); height: 1px;
+            background: linear-gradient(to right, var(--accent), var(--border), var(--border));
         }
 
-        .timeline-line {
-            position: absolute;
-            left: 19px;
-            top: 24px;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #0ea5e9 20%, #1a3557 100%);
+        /* ── Pulse dot ── */
+        @keyframes pulse-ring {
+            0%   { box-shadow: 0 0 0 0   rgba(2,132,199,.5); }
+            70%  { box-shadow: 0 0 0 10px rgba(2,132,199,0); }
+            100% { box-shadow: 0 0 0 0   rgba(2,132,199,0); }
         }
+        .dot-active { animation: pulse-ring 2s infinite; }
 
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #04111e; }
-        ::-webkit-scrollbar-thumb { background: #1a3557; border-radius: 3px; }
+        /* ── Fade-in on scroll ── */
+        .fade-in { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 8px #0ea5e9; }
-            50% { box-shadow: 0 0 18px #0ea5e9, 0 0 30px rgba(14,165,233,0.3); }
-        }
-        .dot-active { animation: pulse-glow 2s infinite; }
+        /* ── Image frame ── */
+        .img-frame { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-3); }
 
-        .section-label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: #0ea5e9;
-        }
+        /* ── Stat block ── */
+        .stat .val { font-size: 1.9rem; font-weight: 900; color: var(--text-1); line-height: 1; }
+        .stat .sub { font-size: .72rem; color: var(--text-3); margin-top: 4px; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--bg-1); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
     </style>
 </head>
 <body class="antialiased">
 
-<!-- ─── NAV ─────────────────────────────────────────────────── -->
-<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md" style="background: rgba(4,17,30,0.88); border-bottom: 1px solid #1a3557;">
+<a href="#main" class="skip-link">
+    <span class="no">Hopp til innhold</span>
+    <span class="en">Skip to content</span>
+</a>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════ -->
+<nav class="nav-glass fixed top-0 left-0 right-0 z-50" aria-label="Hovednavigasjon">
     <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#topp" class="flex items-baseline gap-2">
-            <span class="text-white font-black text-lg tracking-tight">Folkemerden</span>
-            <span class="text-xs font-medium" style="color: #0ea5e9;">by Havklu AS</span>
+            <span class="font-black text-lg tracking-tight text-white">Folkemerden</span>
+            <span class="text-xs font-semibold" style="color:var(--accent);">by Havklu AS</span>
         </a>
-        <div class="flex items-center gap-4">
-            <div class="flex items-center gap-1">
-                <button class="btn-lang active" id="btn-no" onclick="setLang('no')">NO</button>
-                <button class="btn-lang" id="btn-en" onclick="setLang('en')">EN</button>
+
+        <div class="hidden lg:flex items-center gap-7 text-sm font-medium" style="color:var(--text-2);">
+            <a href="#hvorfor-na" class="hover:text-white transition-colors">
+                <span class="no">Hvorfor nå</span><span class="en">Why now</span>
+            </a>
+            <a href="#losningen" class="hover:text-white transition-colors">
+                <span class="no">Løsningen</span><span class="en">Solution</span>
+            </a>
+            <a href="#kostnad" class="hover:text-white transition-colors">
+                <span class="no">Økonomi</span><span class="en">Economics</span>
+            </a>
+            <a href="#om-havklu" class="hover:text-white transition-colors">
+                <span class="no">Om Havklu</span><span class="en">About</span>
+            </a>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <div class="flex items-center gap-1" role="group" aria-label="Velg språk / Select language">
+                <button class="lang-btn active" id="btn-no" onclick="setLang('no')" aria-pressed="true">NO</button>
+                <button class="lang-btn"         id="btn-en" onclick="setLang('en')" aria-pressed="false">EN</button>
             </div>
-            <a href="#kontakt" class="px-5 py-2 rounded-full text-sm font-bold transition-all hover:scale-105"
-               style="background: #0ea5e9; color: #04111e; box-shadow: 0 0 20px rgba(14,165,233,0.25);">
-                <span class="no">Ta kontakt</span>
-                <span class="en">Contact</span>
+            <a href="#kontakt" class="btn-p" style="padding:10px 20px; font-size:.8rem;">
+                <span class="no">Kontakt Havklu</span>
+                <span class="en">Contact Havklu</span>
             </a>
         </div>
     </div>
 </nav>
 
-<!-- ─── HERO ─────────────────────────────────────────────────── -->
-<section class="hero-bg min-h-screen flex items-center" id="topp">
-    <div class="max-w-7xl mx-auto px-6 py-36 w-full">
-        <div class="max-w-3xl">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-8"
-                 style="background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.25); color: #0ea5e9;">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block" style="animation: pulse 2s infinite;"></span>
-                <span>Patent 347371 &mdash; Havklu AS</span>
+<!-- ═══ MAIN ═══════════════════════════════════════════════════ -->
+<main id="main">
+
+<!-- ─── 1. HERO ─────────────────────────────────────────────── -->
+<section id="topp" class="relative overflow-hidden min-h-screen flex items-center" style="background:var(--bg-1);">
+    <div class="hero-grid absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+         style="background:radial-gradient(ellipse 75% 60% at 65% 50%, rgba(2,132,199,.07) 0%, transparent 70%);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-6 w-full py-36">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Text column -->
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-8"
+                     style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent);">
+                    <span class="w-1.5 h-1.5 rounded-full inline-block" style="background:var(--green);"></span>
+                    Patent 347371 &mdash; Havklu AS
+                </div>
+
+                <h1 class="h-hero text-white mb-6">
+                    <span class="no">Lukket oppdrett i sjø &mdash; med realistisk byggekostnad</span>
+                    <span class="en">Closed sea-based salmon farming &mdash; at a realistic construction cost</span>
+                </h1>
+
+                <p class="text-lg leading-relaxed mb-5" style="color:var(--text-2); max-width:520px;">
+                    <span class="no">Folkemerden er en patentert produksjonsenhet i termoplast, utviklet for å møte kravene til lukket teknologi: tett barriere, kontrollert vanninntak, slamoppsamling og ekstra rømmingssikring.</span>
+                    <span class="en">Folkemerden is a patented thermoplastic production unit designed for closed-containment requirements: a tight barrier, controlled water intake, sludge collection and enhanced escape prevention.</span>
+                </p>
+
+                <p class="text-sm font-semibold mb-10" style="color:var(--text-2);">
+                    <span class="no">Havklu AS søker industriell partner for prosjektering, verifikasjon og første pilot.</span>
+                    <span class="en">Havklu AS is seeking an industrial partner for engineering, verification and first pilot deployment.</span>
+                </p>
+
+                <div class="flex flex-wrap gap-3 mb-16">
+                    <a href="#kontakt" class="btn-p">
+                        <span class="no">Be om teknisk brief</span>
+                        <span class="en">Request technical brief</span>
+                    </a>
+                    <a href="#losningen" class="btn-s">
+                        <span class="no">Se løsningen &darr;</span>
+                        <span class="en">See the solution &darr;</span>
+                    </a>
+                </div>
+
+                <!-- Stats row -->
+                <div class="flex flex-wrap gap-8 pt-8" style="border-top:1px solid var(--border);">
+                    <div class="stat">
+                        <div class="val">25 000 <span style="font-size:1.1rem">m³</span></div>
+                        <div class="sub">
+                            <span class="no">referansevolum</span>
+                            <span class="en">reference volume</span>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="val">~1 200 <span style="font-size:1.1rem">t</span></div>
+                        <div class="sub">
+                            <span class="no">estimert biomasse</span>
+                            <span class="en">estimated biomass</span>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="val">50–60 <span style="font-size:1.1rem">MNOK</span></div>
+                        <div class="sub">
+                            <span class="no">estimert konstruksjonskostnad, ekskl. utstyr</span>
+                            <span class="en">estimated construction cost, excl. equipment</span>
+                        </div>
+                    </div>
+                    <div class="stat">
+                        <div class="val">50 <span style="font-size:1.1rem">år</span></div>
+                        <div class="sub">
+                            <span class="no">designlevetid ved inspeksjon/renovasjon</span>
+                            <span class="en">design lifespan with inspection/renovation</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <h1 class="font-black leading-none mb-6 text-white" style="font-size: clamp(2.8rem, 7vw, 5.5rem);">
-                <span class="no">Lakseoppdrett<br>uten kompromiss</span>
-                <span class="en">Salmon farming<br>without compromise</span>
-            </h1>
+            <!-- Model image -->
+            <div class="relative flex items-center justify-center lg:justify-end">
+                <div class="absolute inset-0 pointer-events-none" aria-hidden="true"
+                     style="background:radial-gradient(ellipse at center, rgba(2,132,199,.13) 0%, transparent 70%);"></div>
+                <img src="assets/folkemerd-closed.png"
+                     alt="Folkemerden lukket variant — sylindrisk produksjonsenhet i termoplast, 3D-modell med trakt i bunn for slamoppsamling"
+                     class="relative z-10 w-full max-w-md"
+                     style="filter:drop-shadow(0 0 40px rgba(2,132,199,.18));">
+            </div>
+        </div>
+    </div>
+</section>
 
-            <p class="text-xl md:text-2xl mb-10 leading-relaxed" style="color: #94a3b8; max-width: 560px;">
-                <span class="no">Folkemerden løser lakselus, sykdom, rømning og forurensning &mdash; i én patentert konstruksjon.</span>
-                <span class="en">Folkemerden solves sea lice, disease, escape and pollution &mdash; in one patented construction.</span>
+<!-- ─── 2. HVORFOR NÅ ───────────────────────────────────────── -->
+<section id="hvorfor-na" class="py-28 px-6 fade-in" style="background:var(--bg-2);">
+    <div class="max-w-7xl mx-auto">
+        <div class="max-w-2xl mx-auto text-center mb-14">
+            <span class="label mb-3">
+                <span class="no">Hvorfor nå</span><span class="en">Why now</span>
+            </span>
+            <h2 class="h-section text-white mb-5">
+                <span class="no">Markedet er i endring.<br>Folkemerden er utviklet for dette skiftet.</span>
+                <span class="en">The market is shifting.<br>Folkemerden is designed for this transition.</span>
+            </h2>
+            <p class="text-lg leading-relaxed" style="color:var(--text-2);">
+                <span class="no">Nye krav og regulatoriske insentiver peker mot produksjonsformer som kan dokumentere lavere miljøpåvirkning, bedre kontroll på lakselus og sterkere rømmingssikring.</span>
+                <span class="en">New regulations and market pressure are moving the industry toward production systems that can document lower environmental impact, better sea lice control and stronger escape prevention.</span>
             </p>
+        </div>
 
-            <div class="flex flex-wrap gap-4 mb-20">
-                <a href="#kontakt"
-                   class="px-8 py-4 rounded-full font-bold text-base transition-all hover:scale-105"
-                   style="background: #0ea5e9; color: #04111e; box-shadow: 0 0 35px rgba(14,165,233,0.35);">
-                    <span class="no">Ta kontakt</span>
-                    <span class="en">Get in touch</span>
-                </a>
-                <a href="#losning"
-                   class="px-8 py-4 rounded-full font-semibold text-base transition-all hover:border-sky-400"
-                   style="border: 1px solid #1a3557; color: #e2e8f0;">
-                    <span class="no">Se løsningen &darr;</span>
-                    <span class="en">See the solution &darr;</span>
-                </a>
+        <div class="grid md:grid-cols-2 gap-6">
+            <div class="card">
+                <div class="flex items-center gap-3 mb-5">
+                    <span class="text-3xl" role="img" aria-label="Norsk flagg">🇳🇴</span>
+                    <h3 class="text-xl font-bold text-white">
+                        <span class="no">Norge</span><span class="en">Norway</span>
+                    </h3>
+                </div>
+                <p class="text-base leading-relaxed mb-5" style="color:var(--text-2);">
+                    <span class="no">Myndighetene har innført en ordning der oppdrettere med nedjustert kapasitet kan gjenvinne deler av denne ved å ta i bruk lukkede produksjonsenheter som oppfyller fastsatte krav. Relevante krav inkluderer: tett barriere mot omgivelsene, ingen inntak av frittsvømmende lusestadier, slamoppsamling og ekstra rømmingssikring &mdash; med ekstern verifikasjon av egenskapene. Stortinget arbeider med ytterligere incentiver for luse-sikre og miljøvennlige merdkonstruksjoner i 2026/27.</span>
+                    <span class="en">Norwegian authorities have introduced a scheme where fish farmers with reduced capacity can regain part of it by deploying closed production units meeting specified requirements. These include: a tight barrier to the environment, no intake of free-swimming sea lice stages, sludge collection and enhanced escape prevention &mdash; with third-party verification of the properties. Parliament is developing further incentives for lice-safe and environmentally sound cage constructions in 2026/27.</span>
+                </p>
+                <div class="rounded-xl p-4 text-sm font-medium leading-relaxed"
+                     style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent-hi);">
+                    <span class="no">Folkemerden er utviklet for å kunne dokumenteres mot disse kravene &mdash; forutsatt prosjektering, ekstern verifikasjon og myndighetsgodkjenning.</span>
+                    <span class="en">Folkemerden is designed to be documentable against these requirements &mdash; subject to engineering, third-party verification and regulatory approval.</span>
+                </div>
             </div>
 
-            <!-- Key stats bar -->
-            <div class="flex flex-wrap gap-10 pt-8" style="border-top: 1px solid #1a3557;">
-                <div>
-                    <div class="text-3xl font-black text-white">40 m</div>
-                    <div class="text-sm mt-0.5" style="color: #64748b;">
-                        <span class="no">diameter</span><span class="en">diameter</span>
-                    </div>
+            <div class="card">
+                <div class="flex items-center gap-3 mb-5">
+                    <span class="text-3xl" role="img" aria-label="Kanadisk flagg">🇨🇦</span>
+                    <h3 class="text-xl font-bold text-white">
+                        <span class="no">British Columbia, Canada</span>
+                        <span class="en">British Columbia, Canada</span>
+                    </h3>
                 </div>
-                <div>
-                    <div class="text-3xl font-black text-white">50 <span class="text-xl font-semibold">år</span></div>
-                    <div class="text-sm mt-0.5" style="color: #64748b;">
-                        <span class="no">levetid</span><span class="en">lifespan</span>
-                    </div>
-                </div>
-                <div>
-                    <div class="text-3xl font-black text-white">50–60 <span class="text-xl font-semibold">MNOK</span></div>
-                    <div class="text-sm mt-0.5" style="color: #64748b;">
-                        <span class="no">halvparten av konkurrentene</span>
-                        <span class="en">half the cost of competitors</span>
-                    </div>
-                </div>
-                <div>
-                    <div class="text-3xl font-black text-white">1 200 <span class="text-xl font-semibold">t</span></div>
-                    <div class="text-sm mt-0.5" style="color: #64748b;">
-                        <span class="no">laks per enhet</span>
-                        <span class="en">salmon per unit</span>
-                    </div>
+                <p class="text-base leading-relaxed mb-5" style="color:var(--text-2);">
+                    <span class="no">British Columbia faser ut åpne net-pen lakseanlegg innen 30. juni 2029. Oppdrettsnæringen i regionen er på aktiv jakt etter lukkede og semilukkede teknologier som kan erstatte eksisterende anlegg. Markedet trenger løsninger som kan dokumenteres, prosjekteres og skaleres innen regulatoriske frister.</span>
+                    <span class="en">British Columbia is phasing out open net-pen salmon farming by 30 June 2029. The aquaculture industry in the region is actively seeking closed and semi-closed technologies to replace existing facilities. The market needs solutions that can be documented, engineered and scaled within regulatory deadlines.</span>
+                </p>
+                <div class="rounded-xl p-4 text-sm font-medium leading-relaxed"
+                     style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent-hi);">
+                    <span class="no">Folkemerden er designet for skjermet kystfarvann og kan vurderes som et alternativ i overgangen fra åpne anlegg.</span>
+                    <span class="en">Folkemerden is designed for sheltered coastal waters and may be considered as an option in the transition away from open-net facilities.</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ─── PROBLEM ───────────────────────────────────────────────── -->
-<section class="py-28 px-6" style="background: #071829;" id="problem">
+<!-- ─── 3. UTFORDRINGEN ─────────────────────────────────────── -->
+<section id="utfordringen" class="py-28 px-6 fade-in" style="background:var(--bg-1);">
     <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <p class="section-label mb-3">
+        <div class="text-center mb-14">
+            <span class="label mb-3">
                 <span class="no">Utfordringen</span><span class="en">The challenge</span>
-            </p>
-            <h2 class="font-black text-white mb-4" style="font-size: clamp(2rem, 5vw, 3.5rem);">
-                <span class="no">Fire problemer.<br>Én løsning.</span>
-                <span class="en">Four problems.<br>One solution.</span>
+            </span>
+            <h2 class="h-section text-white">
+                <span class="no">Hva sjøbasert oppdrett<br>må håndtere bedre</span>
+                <span class="en">What sea-based farming<br>must handle better</span>
             </h2>
-            <p class="text-lg mx-auto" style="color: #94a3b8; max-width: 520px;">
-                <span class="no">Norsk lakseoppdrett er under press. Myndighetene krever handling. Folkemerden er svaret.</span>
-                <span class="en">Norwegian salmon farming is under pressure. Authorities demand action. Folkemerden is the answer.</span>
-            </p>
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div class="rounded-2xl p-6 card-hover" style="background: #04111e;">
-                <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background: rgba(239,68,68,0.12);">
-                    <svg class="w-5 h-5" fill="none" stroke="#ef4444" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+            <div class="card">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(239,68,68,.1);">
+                    <svg class="w-5 h-5" fill="none" stroke="#ef4444" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
                 </div>
                 <h3 class="text-base font-bold text-white mb-2">
                     <span class="no">Lakselus</span><span class="en">Sea lice</span>
                 </h3>
-                <p class="text-sm leading-relaxed" style="color: #94a3b8;">
-                    <span class="no">Tett konstruksjon ned til 20 m. Lakselusen lever ned til 12 m &mdash; og kommer aldri inn.</span>
-                    <span class="en">Tight construction to 20m depth. Sea lice live down to 12m &mdash; and never get in.</span>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Lakselusen lever ned til ca. 12 m dyp. En fysisk tett barriere ned til 20 m er utviklet for å hindre inntak av egg og frittsvømmende lusestadier.</span>
+                    <span class="en">Sea lice inhabit depths down to approximately 12m. A physically tight barrier to 20m depth is designed to prevent intake of eggs and free-swimming lice stages.</span>
                 </p>
             </div>
 
-            <div class="rounded-2xl p-6 card-hover" style="background: #04111e;">
-                <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background: rgba(249,115,22,0.12);">
-                    <svg class="w-5 h-5" fill="none" stroke="#f97316" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <div class="card">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(249,115,22,.1);">
+                    <svg class="w-5 h-5" fill="none" stroke="#f97316" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
                 </div>
                 <h3 class="text-base font-bold text-white mb-2">
-                    <span class="no">Sykdom</span><span class="en">Disease</span>
+                    <span class="no">Sykdomseksponering</span><span class="en">Disease exposure</span>
                 </h3>
-                <p class="text-sm leading-relaxed" style="color: #94a3b8;">
-                    <span class="no">Lukket miljø reduserer eksponering for sykdomsfremkallende organismer utenfra dramatisk.</span>
-                    <span class="en">Closed environment dramatically reduces exposure to disease-causing organisms from outside.</span>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Kontrollert vanninntak kan bidra til å redusere eksponering for smittestoffer utenfra. Lukket konstruksjon gir grunnlag for bedre miljøkontroll enn åpne merder.</span>
+                    <span class="en">Controlled water intake may help reduce exposure to external pathogens. A closed construction provides a better basis for environmental control than open cages.</span>
                 </p>
             </div>
 
-            <div class="rounded-2xl p-6 card-hover" style="background: #04111e;">
-                <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background: rgba(234,179,8,0.12);">
-                    <svg class="w-5 h-5" fill="none" stroke="#eab308" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            <div class="card">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(234,179,8,.1);">
+                    <svg class="w-5 h-5" fill="none" stroke="#eab308" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
                 </div>
                 <h3 class="text-base font-bold text-white mb-2">
-                    <span class="no">Rømning</span><span class="en">Escape</span>
+                    <span class="no">Rømmingsrisiko</span><span class="en">Escape risk</span>
                 </h3>
-                <p class="text-sm leading-relaxed" style="color: #94a3b8;">
-                    <span class="no">Hardplast gir en fysisk barriere ingen storm bryter ned. Forankret i mange punkter, nesten helt under vann.</span>
-                    <span class="en">Hard plastic creates a physical barrier no storm can break. Anchored at multiple points, nearly fully submerged.</span>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">En stiv konstruksjon i hardt materiale kan redusere rømmingsrisikoen og gi grunnlag for ekstra fysisk barriere sammenlignet med duk- og notmerder.</span>
+                    <span class="en">A rigid construction in hard material may reduce escape risk and provide a basis for enhanced physical containment compared to fabric and net cages.</span>
                 </p>
             </div>
 
-            <div class="rounded-2xl p-6 card-hover" style="background: #04111e;">
-                <div class="w-11 h-11 rounded-xl flex items-center justify-center mb-5" style="background: rgba(34,197,94,0.12);">
-                    <svg class="w-5 h-5" fill="none" stroke="#22c55e" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+            <div class="card">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style="background:rgba(34,197,94,.1);">
+                    <svg class="w-5 h-5" fill="none" stroke="#22c55e" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
                 </div>
                 <h3 class="text-base font-bold text-white mb-2">
-                    <span class="no">Forurensning</span><span class="en">Pollution</span>
+                    <span class="no">Utslipp og slam</span><span class="en">Emissions and sludge</span>
                 </h3>
-                <p class="text-sm leading-relaxed" style="color: #94a3b8;">
-                    <span class="no">Slam og fôrrester samles opp og pumpes videre &mdash; i stedet for å spre seg i havbunnen under.</span>
-                    <span class="en">Sludge and feed residues are collected and pumped away &mdash; instead of spreading across the seabed below.</span>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Den lukkede varianten er designet for oppsamling av slam og fôrrester via trakt og pumpeløsning. Semilukket variant tilpasses strømforhold og lokalitetens krav.</span>
+                    <span class="en">The closed variant is designed for sludge and feed residue collection via a funnel-and-pump system. The semi-closed variant is adapted to current conditions and site requirements.</span>
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ─── SOLUTION ──────────────────────────────────────────────── -->
-<section class="py-28 px-6" style="background: #04111e;" id="losning">
+<!-- ─── 4. LØSNINGEN ────────────────────────────────────────── -->
+<section id="losningen" class="py-28 px-6 fade-in" style="background:var(--bg-2);">
     <div class="max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
             <div>
-                <p class="section-label mb-3">
+                <span class="label mb-3">
                     <span class="no">Løsningen</span><span class="en">The solution</span>
-                </p>
-                <h2 class="font-black text-white mb-6" style="font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1;">
-                    <span class="no">Enkel. Robust.<br>Fremtidssikker.</span>
-                    <span class="en">Simple. Robust.<br>Future-proof.</span>
+                </span>
+                <h2 class="h-section text-white mb-6">
+                    <span class="no">Termoplast.<br>Stiv konstruksjon.<br>To varianter.</span>
+                    <span class="en">Thermoplastic.<br>Rigid construction.<br>Two variants.</span>
                 </h2>
-                <p class="text-lg leading-relaxed mb-8" style="color: #94a3b8;">
-                    <span class="no">En lukket eller semilukket merd i termoplast (PE100), designet fra grunnen av for å løse industriens største utfordringer. Lett å bygge, billig å drifte, laget for å vare.</span>
-                    <span class="en">A closed or semi-closed enclosure in thermoplastic (PE100), designed from the ground up to solve the industry's biggest challenges. Easy to build, inexpensive to operate, built to last.</span>
+                <p class="text-lg leading-relaxed mb-7" style="color:var(--text-2);">
+                    <span class="no">Folkemerden er en sylindrisk produksjonsenhet bygget av PE100-termoplast &mdash; sveiset etter NS 416 og designet etter NS9415. To varianter kan tilpasses lokalitet og krav.</span>
+                    <span class="en">Folkemerden is a cylindrical production unit built from PE100 thermoplastic &mdash; welded to NS 416 and designed to NS9415. Two variants can be adapted to site conditions and requirements.</span>
                 </p>
+
+                <div class="space-y-4 mb-8">
+                    <div class="card">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 font-black text-xs"
+                                 style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent);">L</div>
+                            <div>
+                                <h3 class="font-bold text-white mb-1">
+                                    <span class="no">Lukket variant</span><span class="en">Closed variant</span>
+                                </h3>
+                                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                                    <span class="no">Tett bunn med slamtrakt og pumpeløsning. Kontrollert vanninntak og uttak. Designet for full slamoppsamling. Egnet for lokaliteter med krav til utslippskontroll.</span>
+                                    <span class="en">Sealed bottom with sludge funnel and pump. Controlled water intake and outlet. Designed for full sludge collection. Suited for sites with emission control requirements.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 font-black text-xs"
+                                 style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent);">S</div>
+                            <div>
+                                <h3 class="font-bold text-white mb-1">
+                                    <span class="no">Semilukket variant</span><span class="en">Semi-closed variant</span>
+                                </h3>
+                                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                                    <span class="no">Åpner for naturlig strøm i nedre del, med nett under som kan bidra til oppsamling. Enklere drift. Tilpasses lokalitetens strømforhold og gjeldende krav.</span>
+                                    <span class="en">Allows natural current in the lower section, with an under-net to assist collection. Simpler operation. Adapted to site-specific current conditions and applicable requirements.</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="grid grid-cols-2 gap-3 mb-6">
-                    <div class="rounded-xl p-4 card-hover" style="background: #071829;">
-                        <div class="text-2xl font-black text-white">40 m</div>
-                        <div class="text-xs mt-1" style="color: #64748b;">
-                            <span class="no">diameter</span><span class="en">diameter</span>
+                    <div class="rounded-xl p-4" style="background:var(--bg-3); border:1px solid var(--border);">
+                        <div class="text-xl font-black text-white">40 m</div>
+                        <div class="text-xs mt-1" style="color:var(--text-3);">
+                            <span class="no">referansediameter</span><span class="en">reference diameter</span>
                         </div>
                     </div>
-                    <div class="rounded-xl p-4 card-hover" style="background: #071829;">
-                        <div class="text-2xl font-black text-white">22 m</div>
-                        <div class="text-xs mt-1" style="color: #64748b;">
-                            <span class="no">dybde</span><span class="en">depth</span>
+                    <div class="rounded-xl p-4" style="background:var(--bg-3); border:1px solid var(--border);">
+                        <div class="text-xl font-black text-white">22 m</div>
+                        <div class="text-xs mt-1" style="color:var(--text-3);">
+                            <span class="no">referansedybde</span><span class="en">reference depth</span>
                         </div>
                     </div>
-                    <div class="rounded-xl p-4 card-hover" style="background: #071829;">
-                        <div class="text-2xl font-black text-white">25 000 m³</div>
-                        <div class="text-xs mt-1" style="color: #64748b;">
-                            <span class="no">volum</span><span class="en">volume</span>
+                    <div class="rounded-xl p-4" style="background:var(--bg-3); border:1px solid var(--border);">
+                        <div class="text-xl font-black text-white">~1 200 t</div>
+                        <div class="text-xs mt-1" style="color:var(--text-3);">
+                            <span class="no">estimert biomasse per enhet</span>
+                            <span class="en">estimated biomass per unit</span>
                         </div>
                     </div>
-                    <div class="rounded-xl p-4 card-hover" style="background: #071829;">
-                        <div class="text-2xl font-black text-white">50 <span class="text-base">år</span></div>
-                        <div class="text-xs mt-1" style="color: #64748b;">
-                            <span class="no">levetid</span><span class="en">lifespan</span>
+                    <div class="rounded-xl p-4" style="background:var(--bg-3); border:1px solid var(--border);">
+                        <div class="text-xl font-black text-white">PE100</div>
+                        <div class="text-xs mt-1" style="color:var(--text-3);">
+                            <span class="no">termoplastmateriale</span><span class="en">thermoplastic material</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="rounded-xl p-4" style="background: rgba(14,165,233,0.07); border: 1px solid rgba(14,165,233,0.2);">
-                    <p class="text-sm leading-relaxed" style="color: #94a3b8;">
-                        <span class="no"><strong style="color: #0ea5e9;">Ingen nye konsesjoner nødvendig.</strong> Folkemerden kan benyttes på eksisterende tillatelser. Designet og sveist etter NS9415 og NS 416.</span>
-                        <span class="en"><strong style="color: #0ea5e9;">No new permits required.</strong> Folkemerden can be used with existing licenses. Designed and welded to NS9415 and NS 416.</span>
-                    </p>
+                <div class="rounded-xl p-4 text-sm leading-relaxed"
+                     style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent-hi);">
+                    <span class="no">Kan vurderes brukt innenfor eksisterende tillatelser og biomassetak, forutsatt relevante godkjenninger og verifikasjon. Endelig dimensjonering avhenger av lokalitet, strøm og regulatoriske krav.</span>
+                    <span class="en">May be considered for use within existing permits and biomass limits, subject to relevant approvals and verification. Final dimensions depend on site conditions, currents and regulatory requirements.</span>
                 </div>
             </div>
 
-            <!-- Product images -->
             <div class="space-y-4">
-                <div class="rounded-2xl overflow-hidden" style="border: 1px solid #1a3557; box-shadow: 0 0 50px rgba(14,165,233,0.08);">
-                    <img src="assets/folkemerd-closed.png" alt="Folkemerden lukket versjon" class="w-full object-contain" style="background: #0d1f35; min-height: 200px;">
+                <div class="img-frame">
+                    <img src="assets/folkemerd-closed.png"
+                         alt="Folkemerden lukket variant — 3D-modell av sylindrisk termoplastkonstruksjon sett fra siden, med trakt og pumpe i bunn"
+                         class="w-full object-contain"
+                         style="min-height:220px; background:var(--bg-3);">
                 </div>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="rounded-xl overflow-hidden" style="border: 1px solid #1a3557;">
-                        <img src="assets/folkemerd-semi.png" alt="Semilukket variant" class="w-full object-contain" style="background: #0d1f35; min-height: 140px;">
+                    <div class="img-frame">
+                        <img src="assets/folkemerd-semi.png"
+                             alt="Folkemerden semilukket variant — 3D-modell med åpen underdel og nettløsning"
+                             class="w-full object-contain"
+                             style="min-height:150px; background:var(--bg-3);">
                     </div>
-                    <div class="rounded-xl overflow-hidden" style="border: 1px solid #1a3557;">
-                        <img src="assets/folkemerd-drawing.png" alt="Teknisk tegning" class="w-full object-contain" style="background: #0d1f35; min-height: 140px;">
+                    <div class="img-frame">
+                        <img src="assets/folkemerd-drawing.png"
+                             alt="Konsepttegning av Folkemerden — sidevisning og tverrsnitt av referansemodell"
+                             class="w-full object-contain"
+                             style="min-height:150px; background:var(--bg-3);">
                     </div>
                 </div>
-                <p class="text-xs text-center" style="color: #64748b;">
-                    <span class="no">Lukket variant (øverst) og semilukket variant (nedre venstre)</span>
-                    <span class="en">Closed variant (top) and semi-closed variant (lower left)</span>
+                <p class="text-xs text-center" style="color:var(--text-3);">
+                    <span class="no">3D-modeller og konsepttegning. Referansemodell — endelig dimensjonering avhenger av lokalitet og krav.</span>
+                    <span class="en">3D models and concept drawing. Reference model — final dimensions subject to site conditions and requirements.</span>
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ─── WHY NOW ───────────────────────────────────────────────── -->
-<section class="py-28 px-6" style="background: #071829;" id="hvorfor-na">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <p class="section-label mb-3">
-                <span class="no">Tidspunktet</span><span class="en">The timing</span>
-            </p>
-            <h2 class="font-black text-white" style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1;">
-                <span class="no">Markedet er klart.<br>Regelverket er klart.<br>Er du klar?</span>
-                <span class="en">The market is ready.<br>Regulations are in place.<br>Are you?</span>
+<!-- ─── 5. DESIGNET FOR VERIFIKASJON ───────────────────────── -->
+<section id="verifikasjon" class="py-28 px-6 fade-in" style="background:var(--bg-1);">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-14">
+            <span class="label mb-3">
+                <span class="no">Designet for dokumentasjon</span>
+                <span class="en">Designed for documentation</span>
+            </span>
+            <h2 class="h-section text-white mb-5">
+                <span class="no">Ikke bare løfter &mdash;<br>men dokumenterbare egenskaper</span>
+                <span class="en">Not just promises &mdash;<br>but documentable properties</span>
             </h2>
+            <p class="text-lg leading-relaxed mx-auto" style="color:var(--text-2); max-width:560px;">
+                <span class="no">Folkemerden skal prosjekteres, beregnes og verifiseres mot relevante krav til lukket produksjon. Målet er en konstruksjon som kombinerer industriell byggbarhet med dokumenterbare miljøegenskaper.</span>
+                <span class="en">Folkemerden is intended to be engineered, calculated and verified against relevant closed-containment requirements. The goal is a production unit combining industrial buildability with documentable environmental performance.</span>
+            </p>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="rounded-2xl p-8 card-hover" style="background: #04111e;">
-                <div class="flex items-center gap-3 mb-5">
-                    <span class="text-4xl">🇳🇴</span>
-                    <h3 class="text-2xl font-bold text-white">
-                        <span class="no">Norge</span><span class="en">Norway</span>
-                    </h3>
+        <!-- Process steps -->
+        <div class="relative">
+            <div class="step-line hidden md:block" aria-hidden="true"></div>
+            <div class="grid md:grid-cols-5 gap-4 text-center">
+
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4 z-10 text-white font-black"
+                         style="background:var(--green); font-size:1.1rem;">✓</div>
+                    <h4 class="font-bold text-white text-sm mb-1">
+                        <span class="no">Konsept</span><span class="en">Concept</span>
+                    </h4>
+                    <p class="text-xs" style="color:var(--text-3);">
+                        <span class="no">Patentert design og teknisk grunnlag</span>
+                        <span class="en">Patented design and technical basis</span>
+                    </p>
                 </div>
-                <p class="text-base leading-relaxed mb-5" style="color: #94a3b8;">
-                    <span class="no">Fra oktober 2025 kan oppdrettere med nedjustert kapasitet gjenvinne den &mdash; ved å ta i bruk godkjent lukket teknologi. Stortinget utformer nye incentiver for luse-sikre og miljøvennlige konstruksjoner i 2026/27.</span>
-                    <span class="en">From October 2025, fish farmers with reduced capacity can regain it &mdash; by adopting approved closed technology. Parliament is developing new incentives for lice-safe and environmentally sound constructions in 2026/27.</span>
-                </p>
-                <div class="rounded-xl p-4" style="background: rgba(14,165,233,0.07); border: 1px solid rgba(14,165,233,0.18);">
-                    <p class="text-sm font-medium" style="color: #7dd3fc;">
-                        <span class="no">Myndighetene krever: tett barriere, ingen lusepåslag, slamoppsamling, rømningssikring. Folkemerden oppfyller alle krav.</span>
-                        <span class="en">Authorities require: tight barrier, no sea lice infestation, sludge collection, escape prevention. Folkemerden meets all requirements.</span>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4 z-10 font-black dot-active"
+                         style="background:var(--accent); color:#fff; font-size:1.1rem;">2</div>
+                    <h4 class="font-bold text-white text-sm mb-1">
+                        <span class="no">Prosjektering</span><span class="en">Engineering</span>
+                    </h4>
+                    <p class="text-xs" style="color:var(--text-3);">
+                        <span class="no">Pågår — søker industripartner</span>
+                        <span class="en">In progress — seeking partner</span>
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4 z-10 font-black"
+                         style="background:var(--bg-3); border:2px solid var(--border); color:var(--text-2); font-size:1.1rem;">3</div>
+                    <h4 class="font-bold text-white text-sm mb-1">
+                        <span class="no">Ekstern verifikasjon</span><span class="en">3rd-party verification</span>
+                    </h4>
+                    <p class="text-xs" style="color:var(--text-3);">
+                        <span class="no">Uavhengig kontroll av egenskaper</span>
+                        <span class="en">Independent verification of properties</span>
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4 z-10 font-black"
+                         style="background:var(--bg-3); border:2px solid var(--border); color:var(--text-2); font-size:1.1rem;">4</div>
+                    <h4 class="font-bold text-white text-sm mb-1">
+                        <span class="no">Pilot</span><span class="en">Pilot</span>
+                    </h4>
+                    <p class="text-xs" style="color:var(--text-3);">
+                        <span class="no">Første fullskala produksjonsenhet</span>
+                        <span class="en">First full-scale production unit</span>
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4 z-10 font-black"
+                         style="background:var(--bg-3); border:2px solid var(--border); color:var(--text-2); font-size:1.1rem;">5</div>
+                    <h4 class="font-bold text-white text-sm mb-1">
+                        <span class="no">Skalering</span><span class="en">Scale-up</span>
+                    </h4>
+                    <p class="text-xs" style="color:var(--text-3);">
+                        <span class="no">Serieproduksjon og kommersiell drift</span>
+                        <span class="en">Serial production and commercial operation</span>
                     </p>
                 </div>
             </div>
-
-            <div class="rounded-2xl p-8 card-hover" style="background: #04111e;">
-                <div class="flex items-center gap-3 mb-5">
-                    <span class="text-4xl">🇨🇦</span>
-                    <h3 class="text-2xl font-bold text-white">Canada</h3>
-                </div>
-                <p class="text-base leading-relaxed mb-5" style="color: #94a3b8;">
-                    <span class="no">Canada stenger områder for åpne notmerder. Oppdrettsnæringen er på aktiv jakt etter lukket teknologi som kan erstatte eksisterende anlegg &mdash; raskt og kostnadseffektivt.</span>
-                    <span class="en">Canada is closing areas to open net pen farming. The aquaculture industry is actively seeking closed technology to replace existing facilities &mdash; quickly and cost-effectively.</span>
-                </p>
-                <div class="rounded-xl p-4" style="background: rgba(14,165,233,0.07); border: 1px solid rgba(14,165,233,0.18);">
-                    <p class="text-sm font-medium" style="color: #7dd3fc;">
-                        <span class="no">Folkemerden er designet for skjermet kystfarvann og passer perfekt inn i det kanadiske markedet.</span>
-                        <span class="en">Folkemerden is designed for sheltered coastal waters and fits perfectly into the Canadian market.</span>
-                    </p>
-                </div>
-            </div>
         </div>
     </div>
 </section>
 
-<!-- ─── ADVANTAGES ────────────────────────────────────────────── -->
-<section class="py-28 px-6" style="background: #04111e;" id="fortrinn">
-    <div class="max-w-7xl mx-auto">
-        <div class="text-center mb-16">
-            <p class="section-label mb-3">
-                <span class="no">Konkurransefortrinn</span><span class="en">Competitive advantages</span>
-            </p>
-            <h2 class="font-black text-white" style="font-size: clamp(2rem, 5vw, 3.5rem);">
-                <span class="no">Hvorfor Folkemerden</span>
-                <span class="en">Why Folkemerden</span>
-            </h2>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div class="rounded-2xl p-6 card-hover" style="background: #071829;">
-                <div class="text-3xl mb-4">💰</div>
-                <h3 class="text-base font-bold text-white mb-2">
-                    <span class="no">Billigst i markedet</span><span class="en">Lowest cost on the market</span>
-                </h3>
-                <p class="text-sm leading-relaxed" style="color: #94a3b8;">
-                    <span class="no">50–60 MNOK for en 40-metring &mdash; halvparten av tilsvarende konstruksjoner. Kostnadene synker ytterligere ved serieproduksjon.</span>
-                    <span class="en">50–60 MNOK for a 40m unit &mdash; half the cost of comparable structures. Costs drop further in serial production.</span>
-                </p>
-            </div>
-
-            <div class="rounded-2xl p-6 card-hover" style="background: #071829;">
-                <div class="text-3xl mb-4">⚗️</div>
-                <h3 class="text-base font-bold text-white mb-2">
-                    <span class="no">Smart materialvalg</span><span class="en">Smart material choice</span>
-                </h3>
-                <p class="text-sm leading-relaxed" style="color: #94a3b8;">
-                    <span class="no">Termoplast med egenvekt lik vann &mdash; oppdriften styres enkelt. Lett å sveise, minimal korrosjon, 100&nbsp;% resirkulerbart.</span>
-                    <span class="en">Thermoplastic with the same density as water &mdash; buoyancy controlled easily. Easy to weld, minimal corrosion, 100% recyclable.</span>
-                </p>
-            </div>
-
-            <div class="rounded-2xl p-6 card-hover" style="background: #071829;">
-                <div class="text-3xl mb-4">🔧</div>
-                <h3 class="text-base font-bold text-white mb-2">
-                    <span class="no">Fleksibel og skalerbar</span><span class="en">Flexible and scalable</span>
-                </h3>
-                <p class="text-sm leading-relaxed" style="color: #94a3b8;">
-                    <span class="no">Lukket eller semilukket variant etter behov. Tilpasses i størrelse og integreres med eksisterende utstyr.</span>
-                    <span class="en">Closed or semi-closed variant as needed. Customizable in size and integrates with existing equipment.</span>
-                </p>
-            </div>
-
-            <div class="rounded-2xl p-6 card-hover" style="background: #071829;">
-                <div class="text-3xl mb-4">⏳</div>
-                <h3 class="text-base font-bold text-white mb-2">
-                    <span class="no">50 års levetid</span><span class="en">50-year lifespan</span>
-                </h3>
-                <p class="text-sm leading-relaxed" style="color: #94a3b8;">
-                    <span class="no">Halvveis tas konstruksjonen inn, sveisene sjekkes og den settes ut igjen. Langt over levetiden til duk- og notmerder.</span>
-                    <span class="en">Halfway through, the construction is brought in, welds inspected, and redeployed. Far exceeds the lifespan of fabric and net cages.</span>
-                </p>
-            </div>
-
-            <div class="rounded-2xl p-6 card-hover" style="background: #071829;">
-                <div class="text-3xl mb-4">⚓</div>
-                <h3 class="text-base font-bold text-white mb-2">
-                    <span class="no">Stormskikket</span><span class="en">Storm-proof</span>
-                </h3>
-                <p class="text-sm leading-relaxed" style="color: #94a3b8;">
-                    <span class="no">Kun 0,5 m stikker over vann. Plassert skjermet bak øyer og holmer, forankret i mange punkter. Vind og bølger er ikke et problem.</span>
-                    <span class="en">Only 0.5m above water. Placed in sheltered waters behind islands and skerries, anchored at multiple points. Wind and waves are not an issue.</span>
-                </p>
-            </div>
-
-            <div class="rounded-2xl p-6 card-hover" style="background: #071829;">
-                <div class="text-3xl mb-4">🏦</div>
-                <h3 class="text-base font-bold text-white mb-2">
-                    <span class="no">Leasingvennlig</span><span class="en">Lease-friendly</span>
-                </h3>
-                <p class="text-sm leading-relaxed" style="color: #94a3b8;">
-                    <span class="no">Lang levetid og forutsigbar verdi gjør konstruksjonen godt egnet for finansiering gjennom bank og leasingselskaper.</span>
-                    <span class="en">Long lifespan and predictable value make it well suited for financing through banks and leasing companies.</span>
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ─── TIMELINE ──────────────────────────────────────────────── -->
-<section class="py-28 px-6" style="background: #071829;" id="fremdrift">
-    <div class="max-w-3xl mx-auto">
-        <div class="text-center mb-16">
-            <p class="section-label mb-3">
-                <span class="no">Fremdriftsplan</span><span class="en">Project timeline</span>
-            </p>
-            <h2 class="font-black text-white" style="font-size: clamp(2rem, 5vw, 3.5rem);">
-                <span class="no">Klar til å starte nå</span>
-                <span class="en">Ready to start now</span>
-            </h2>
-        </div>
-
-        <div class="relative pl-12">
-            <div class="timeline-line"></div>
-
-            <!-- Step 1 – completed -->
-            <div class="relative mb-6">
-                <div class="absolute -left-12 top-4 w-5 h-5 rounded-full ring-4 ring-offset-2 flex-shrink-0"
-                     style="background: #22c55e; ring-color: #071829; ring-offset-color: #071829; box-shadow: 0 0 10px #22c55e;"></div>
-                <div class="rounded-2xl p-5" style="background: #04111e; border: 1px solid rgba(34,197,94,0.25);">
-                    <span class="text-xs font-bold px-2 py-1 rounded-full inline-block mb-2"
-                          style="background: rgba(34,197,94,0.1); color: #22c55e;">
-                        <span class="no">✓ Fullført &mdash; Q1 2026</span>
-                        <span class="en">✓ Completed &mdash; Q1 2026</span>
-                    </span>
-                    <h3 class="font-bold text-white">
-                        <span class="no">Forprosjektering</span><span class="en">Pre-engineering</span>
-                    </h3>
-                </div>
-            </div>
-
-            <!-- Step 2 – active -->
-            <div class="relative mb-6">
-                <div class="absolute -left-12 top-4 w-5 h-5 rounded-full dot-active"
-                     style="background: #0ea5e9;"></div>
-                <div class="rounded-2xl p-5" style="background: #04111e; border: 1px solid rgba(14,165,233,0.35);">
-                    <span class="text-xs font-bold px-2 py-1 rounded-full inline-block mb-2"
-                          style="background: rgba(14,165,233,0.1); color: #0ea5e9;">
-                        <span class="no">▶ Pågår &mdash; Q2–Q3 2026</span>
-                        <span class="en">▶ In progress &mdash; Q2–Q3 2026</span>
-                    </span>
-                    <h3 class="font-bold text-white">
-                        <span class="no">Fullprosjektering + Modelltesting</span>
-                        <span class="en">Full engineering + Model testing</span>
-                    </h3>
-                </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="relative mb-6">
-                <div class="absolute -left-12 top-4 w-5 h-5 rounded-full" style="background: #1a3557;"></div>
-                <div class="rounded-2xl p-5" style="background: #04111e; border: 1px solid #1a3557;">
-                    <span class="text-xs font-bold px-2 py-1 rounded-full inline-block mb-2"
-                          style="background: #071829; color: #64748b;">Q3 2026 — Q1 2027</span>
-                    <h3 class="font-bold text-white">
-                        <span class="no">Sertifisering + Byggestart prototype</span>
-                        <span class="en">Certification + Prototype construction</span>
-                    </h3>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="relative mb-6">
-                <div class="absolute -left-12 top-4 w-5 h-5 rounded-full" style="background: #1a3557;"></div>
-                <div class="rounded-2xl p-5" style="background: #04111e; border: 1px solid #1a3557;">
-                    <span class="text-xs font-bold px-2 py-1 rounded-full inline-block mb-2"
-                          style="background: #071829; color: #64748b;">Q2–Q4 2027</span>
-                    <h3 class="font-bold text-white">
-                        <span class="no">Første utsett &mdash; smolt til 1,5 kg</span>
-                        <span class="en">First stocking &mdash; smolt to 1.5 kg</span>
-                    </h3>
-                </div>
-            </div>
-
-            <!-- Step 5 -->
-            <div class="relative">
-                <div class="absolute -left-12 top-4 w-5 h-5 rounded-full" style="background: #1a3557;"></div>
-                <div class="rounded-2xl p-5" style="background: #04111e; border: 1px solid #1a3557;">
-                    <span class="text-xs font-bold px-2 py-1 rounded-full inline-block mb-2"
-                          style="background: #071829; color: #64748b;">Q1–Q3 2028</span>
-                    <h3 class="font-bold text-white">
-                        <span class="no">Matfiskproduksjon til 6 kg</span>
-                        <span class="en">Market salmon production to 6 kg</span>
-                    </h3>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ─── ABOUT ──────────────────────────────────────────────────── -->
-<section class="py-28 px-6" style="background: #04111e;" id="om-havklu">
-    <div class="max-w-7xl mx-auto">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
+<!-- ─── 6. KOSTNADSPOSISJON ─────────────────────────────────── -->
+<section id="kostnad" class="py-28 px-6 fade-in" style="background:var(--bg-2);">
+    <div class="max-w-5xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-                <p class="section-label mb-3">
-                    <span class="no">Om Havklu AS</span><span class="en">About Havklu AS</span>
-                </p>
-                <h2 class="font-black text-white mb-6" style="font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.1;">
-                    <span class="no">Teknologien<br>er bevist.<br>Patentet er i orden.</span>
-                    <span class="en">The technology<br>is proven.<br>The patent is secured.</span>
+                <span class="label mb-3">
+                    <span class="no">Kostnadsposisjon</span><span class="en">Cost position</span>
+                </span>
+                <h2 class="h-section text-white mb-6">
+                    <span class="no">En byggekostnad som kan gjøre lukket teknologi mer realistisk</span>
+                    <span class="en">A construction cost that may make closed containment more realistic</span>
                 </h2>
-                <p class="text-lg leading-relaxed mb-5" style="color: #94a3b8;">
-                    <span class="no">Folkemerden er ikke et idéstadieprosjekt. Den er en forenkling og forbedring av en stålkonstruksjon som fikk fire statlige utviklingskonsesjoner &mdash; og faktisk ble bygget.</span>
-                    <span class="en">Folkemerden is not an idea-stage project. It is a simplification and improvement of a steel construction that received four government development concessions &mdash; and was actually built.</span>
+                <p class="text-lg leading-relaxed mb-5" style="color:var(--text-2);">
+                    <span class="no">Valget av termoplast er delvis motivert av ønsket om lavere konstruksjonskostnad. Interne sammenlikninger indikerer betydelig lavere konstruksjonskostnad enn flere alternative lukkede konsepter i stål og betong.</span>
+                    <span class="en">The choice of thermoplastic is partly motivated by a desire for lower construction cost. Internal comparisons indicate a significantly lower construction cost than several alternative closed-containment concepts in steel and concrete.</span>
                 </p>
-                <p class="text-lg leading-relaxed mb-8" style="color: #94a3b8;">
-                    <span class="no">Ved å bytte stål mot termoplast ble kostnadene halvert &mdash; uten at funksjonaliteten gikk tapt. Havklu AS søker nå samarbeidspartnere for å realisere neste steg.</span>
-                    <span class="en">By replacing steel with thermoplastic, costs were halved &mdash; without losing functionality. Havklu AS is now seeking partners to realise the next step.</span>
+                <p class="text-sm leading-relaxed" style="color:var(--text-3);">
+                    <span class="no">Endelig kostnad vil avhenge av leverandør, lokalitet, dimensjoner og teknisk utstyr. Kostnadene kan forventes å reduseres ved serieproduksjon.</span>
+                    <span class="en">Final cost will depend on supplier, location, dimensions and technical equipment. Costs are expected to decrease in serial production.</span>
+                </p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="rounded-2xl p-8" style="background:var(--bg-3); border:1px solid var(--border);">
+                    <div class="text-xs font-semibold mb-2" style="color:var(--text-3);">
+                        <span class="no">Referansemodell — estimert konstruksjonskostnad</span>
+                        <span class="en">Reference model — estimated construction cost</span>
+                    </div>
+                    <div class="text-5xl font-black text-white leading-none mb-1">50–60</div>
+                    <div class="text-xl font-semibold mb-4" style="color:var(--accent);">MNOK</div>
+                    <p class="text-sm leading-relaxed" style="color:var(--text-3);">
+                        <span class="no">Ekskl. teknisk utstyr (pumper, rørsystem, fôringsutstyr, overvåking m.m.). Basert på leverandørestimater. Endelig pris avhenger av spesifikasjon og lokalitet.</span>
+                        <span class="en">Excl. technical equipment (pumps, piping, feeding systems, monitoring, etc.). Based on supplier estimates. Final price subject to specification and location.</span>
+                    </p>
+                </div>
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="rounded-xl p-4 text-center" style="background:var(--bg-3); border:1px solid var(--border);">
+                        <div class="text-lg font-black text-white">~210 t</div>
+                        <div class="text-xs mt-1" style="color:var(--text-3);">
+                            <span class="no">estimert PE-vekt</span><span class="en">est. PE weight</span>
+                        </div>
+                    </div>
+                    <div class="rounded-xl p-4 text-center" style="background:var(--bg-3); border:1px solid var(--border);">
+                        <div class="text-lg font-black text-white">~1,0</div>
+                        <div class="text-xs mt-1" style="color:var(--text-3);">
+                            <span class="no">egenvekt (nær vann)</span><span class="en">density (near water)</span>
+                        </div>
+                    </div>
+                    <div class="rounded-xl p-4 text-center" style="background:var(--bg-3); border:1px solid var(--border);">
+                        <div class="text-lg font-black text-white">100%</div>
+                        <div class="text-xs mt-1" style="color:var(--text-3);">
+                            <span class="no">resirkulerbar PE</span><span class="en">recyclable PE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── 7. PILOTCASE ────────────────────────────────────────── -->
+<section id="pilot" class="py-28 px-6 fade-in" style="background:var(--bg-1);">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-12">
+            <span class="label mb-3">
+                <span class="no">Mulig første bruksområde</span>
+                <span class="en">Potential first use case</span>
+            </span>
+            <h2 class="h-section text-white mb-5">
+                <span class="no">En trinnvis vei inn i<br>lukket teknologi</span>
+                <span class="en">A stepwise path into<br>closed-containment technology</span>
+            </h2>
+            <p class="text-lg leading-relaxed mx-auto" style="color:var(--text-2); max-width:540px;">
+                <span class="no">Et realistisk første bruksområde kan være lukket postsmoltproduksjon i sjø &mdash; kombinert med eksisterende produksjonsstruktur.</span>
+                <span class="en">A realistic first use case may be closed post-smolt production at sea &mdash; combined with an existing production structure.</span>
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5">
+            <div class="card text-center">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                     style="background:var(--accent-bg); border:1px solid var(--border-a);">
+                    <svg class="w-6 h-6" fill="none" stroke="var(--accent)" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                </div>
+                <h3 class="font-bold text-white mb-2">
+                    <span class="no">Eksisterende anlegg beholdes</span>
+                    <span class="en">Existing site retained</span>
+                </h3>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Notmerder for hoveddelen av produksjonen beholdes. Folkemerden tilføyes som ett element &mdash; ikke som en fullstendig ombygging fra dag én.</span>
+                    <span class="en">Net cages for the main production are retained. Folkemerden is added as one element &mdash; not as a complete rebuild from day one.</span>
+                </p>
+            </div>
+
+            <div class="card text-center" style="border-color:var(--border-a);">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                     style="background:var(--accent-bg); border:1px solid var(--border-a);">
+                    <svg class="w-6 h-6" fill="none" stroke="var(--accent)" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                </div>
+                <h3 class="font-bold text-white mb-2">
+                    <span class="no">Folkemerden for postsmolt</span>
+                    <span class="en">Folkemerden for post-smolt</span>
+                </h3>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Lukkede enheter kan vurderes for produksjon av postsmolt fra ca. 1,5–2 kg i et kontrollert miljø, med redusert luseksponering i en kritisk fase.</span>
+                    <span class="en">Closed units may be considered for producing post-smolt from approximately 1.5–2 kg in a controlled environment, reducing lice exposure during a critical phase.</span>
+                </p>
+            </div>
+
+            <div class="card text-center">
+                <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                     style="background:var(--accent-bg); border:1px solid var(--border-a);">
+                    <svg class="w-6 h-6" fill="none" stroke="var(--accent)" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                </div>
+                <h3 class="font-bold text-white mb-2">
+                    <span class="no">Overføring og skalering</span>
+                    <span class="en">Transfer and scale-up</span>
+                </h3>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Etter postsmoltfase kan fisken overføres til eksisterende produksjonsstruktur. Erfaringsgrunnlaget fra pilot kan danne basis for videre skalering.</span>
+                    <span class="en">After the post-smolt phase, fish may be transferred to the existing production structure. Experience from the pilot can form the basis for further scaling.</span>
+                </p>
+            </div>
+        </div>
+
+        <p class="text-xs text-center mt-8" style="color:var(--text-3);">
+            <span class="no">Dette er et mulig bruksområde, ikke et dokumentert produksjonsopplegg. Endelig løsning avhenger av prosjektering, godkjenninger og partnerens eksisterende anlegg.</span>
+            <span class="en">This is a potential use case, not a documented production scheme. Final solution depends on engineering, approvals and the partner's existing facilities.</span>
+        </p>
+    </div>
+</section>
+
+<!-- ─── 8. FORTRINN ─────────────────────────────────────────── -->
+<section id="fortrinn" class="py-28 px-6 fade-in" style="background:var(--bg-2);">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-14">
+            <span class="label mb-3">
+                <span class="no">Konstruksjonsmessige fortrinn</span>
+                <span class="en">Construction advantages</span>
+            </span>
+            <h2 class="h-section text-white">
+                <span class="no">Designet for å bygges,<br>ikke bare beskrives</span>
+                <span class="en">Designed to be built,<br>not just described</span>
+            </h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="card">
+                <h3 class="font-bold text-white mb-2">
+                    <span class="no">Egenvekt nær vann</span><span class="en">Density close to water</span>
+                </h3>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">PE100 har egenvekt tilnærmet lik vann, noe som forenkler styring av oppdrift og senking av konstruksjonen.</span>
+                    <span class="en">PE100 has a density close to water, which simplifies buoyancy management and submersion of the structure.</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3 class="font-bold text-white mb-2">
+                    <span class="no">Sveisbar og kontrollerbar</span><span class="en">Weldable and inspectable</span>
+                </h3>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Plater og stendere sveises etter etablerte prosedyrer. Sveisefuger kan kontrolleres i henhold til Norsk Standard.</span>
+                    <span class="en">Plates and frames welded to established procedures. Weld seams can be inspected per Norwegian Standard.</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3 class="font-bold text-white mb-2">
+                    <span class="no">Færre korrosjonsutfordringer</span><span class="en">Fewer corrosion challenges</span>
+                </h3>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Termoplast er ikke utsatt for elektrokjemisk korrosjon i sjøvann &mdash; noe som kan redusere vedlikeholdskostnader over tid.</span>
+                    <span class="en">Thermoplastic is not subject to electrochemical corrosion in seawater &mdash; which may reduce maintenance costs over time.</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3 class="font-bold text-white mb-2">
+                    <span class="no">Fleksible dimensjoner</span><span class="en">Flexible dimensions</span>
+                </h3>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Kan tilpasses gjeldende regelverk og lokalitetens krav. Referansemodell: 40 m diameter, 22 m dybde.</span>
+                    <span class="en">Can be adapted to applicable regulations and site requirements. Reference model: 40m diameter, 22m depth.</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3 class="font-bold text-white mb-2">
+                    <span class="no">Lokal bygging mulig</span><span class="en">Local construction possible</span>
+                </h3>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Konstruksjonen kan monteres nær valgt lokalitet, noe som forenkler logistikk og muliggjør bruk av lokale plastprodusenter.</span>
+                    <span class="en">The structure can be assembled near the intended site, simplifying logistics and enabling use of local plastics manufacturers.</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3 class="font-bold text-white mb-2">
+                    <span class="no">Designet for renovasjon</span><span class="en">Designed for renovation</span>
+                </h3>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Planlagt for midtveis inn- og utsetting med sveiseinspeksjon. Mulig designlevetid opp mot 50 år.</span>
+                    <span class="en">Planned for mid-life retrieval with weld inspection and redeployment. Possible design lifespan of up to 50 years.</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3 class="font-bold text-white mb-2">
+                    <span class="no">Integrerer kjent utstyr</span><span class="en">Integrates known equipment</span>
+                </h3>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Utviklet for å kunne integrere prøvet teknisk utstyr fra etablerte leverandører innen pumper, vannhåndtering og biologisk overvåking.</span>
+                    <span class="en">Developed to integrate proven technical equipment from established suppliers in pumping, water management and biological monitoring.</span>
+                </p>
+            </div>
+            <div class="card">
+                <h3 class="font-bold text-white mb-2">
+                    <span class="no">Resirkulerbart materiale</span><span class="en">Recyclable material</span>
+                </h3>
+                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Polyetylen kan i utgangspunktet resirkuleres og gjenbrukes ved endt levetid &mdash; positivt i et livsløpsperspektiv.</span>
+                    <span class="en">Polyethylene can in principle be recycled and reused at end of life &mdash; positive from a lifecycle perspective.</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ─── 9. OM HAVKLU ────────────────────────────────────────── -->
+<section id="om-havklu" class="py-28 px-6 fade-in" style="background:var(--bg-1);">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+            <div>
+                <span class="label mb-3">
+                    <span class="no">Om Havklu AS</span><span class="en">About Havklu AS</span>
+                </span>
+                <h2 class="h-section text-white mb-6">
+                    <span class="no">Patentert konsept<br>med industriell forhistorie</span>
+                    <span class="en">Patented concept<br>with industrial history</span>
+                </h2>
+                <p class="text-lg leading-relaxed mb-5" style="color:var(--text-2);">
+                    <span class="no">Havklu AS eier patentet bak Folkemerden. Konseptet er utviklet av sivilingeniør Olav Klungreseth, med utgangspunkt i mer enn ti års arbeid med store produksjonsenheter for sjøbasert oppdrett.</span>
+                    <span class="en">Havklu AS owns the patent behind Folkemerden. The concept was developed by civil engineer Olav Klungreseth, building on more than ten years of work with large production units for sea-based aquaculture.</span>
+                </p>
+                <p class="text-lg leading-relaxed mb-8" style="color:var(--text-2);">
+                    <span class="no">Forgjengeren, Hydra-tanken/Storbåtsegga, fikk fire statlige utviklingskonsesjoner og ble bygget i stål. Folkemerden viderefører prinsippene i en enklere og mer kostnadseffektiv konstruksjon i termoplast.</span>
+                    <span class="en">The predecessor, the Hydra-tank/Storbåtsegga, received four government development concessions and was built in steel. Folkemerden carries forward the principles in a simpler and more cost-effective thermoplastic construction.</span>
                 </p>
                 <div class="flex flex-wrap gap-3">
                     <span class="rounded-xl px-4 py-2 text-sm font-semibold"
-                          style="background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.2); color: #7dd3fc;">
-                        <span class="no">Patent 347371</span><span class="en">Patent 347371</span>
+                          style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent-hi);">Patent 347371</span>
+                    <span class="rounded-xl px-4 py-2 text-sm font-semibold"
+                          style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent-hi);">
+                        <span class="no">4 statlige utviklingskonsesjoner (forgjenger)</span>
+                        <span class="en">4 gov. development concessions (predecessor)</span>
                     </span>
                     <span class="rounded-xl px-4 py-2 text-sm font-semibold"
-                          style="background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.2); color: #7dd3fc;">
-                        <span class="no">4 statlige utviklingskonsesjoner</span>
-                        <span class="en">4 gov. development concessions</span>
-                    </span>
-                    <span class="rounded-xl px-4 py-2 text-sm font-semibold"
-                          style="background: rgba(14,165,233,0.1); border: 1px solid rgba(14,165,233,0.2); color: #7dd3fc;">
-                        <span class="no">10 år i utvikling</span><span class="en">10 years in development</span>
+                          style="background:var(--accent-bg); border:1px solid var(--border-a); color:var(--accent-hi);">
+                        <span class="no">10+ år i utvikling</span><span class="en">10+ years in development</span>
                     </span>
                 </div>
             </div>
 
-            <div class="rounded-2xl p-8 card-hover" style="background: #071829;">
+            <div class="card" style="background:var(--bg-2);">
                 <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-xl font-black mb-6"
-                     style="background: #0ea5e9; color: #04111e;">OK</div>
+                     style="background:var(--accent); color:var(--bg-1);">OK</div>
                 <h3 class="text-2xl font-bold text-white mb-1">Olav Klungreseth</h3>
-                <p class="text-sm font-semibold mb-5" style="color: #0ea5e9;">
+                <p class="text-sm font-semibold mb-5" style="color:var(--accent);">
                     <span class="no">Sivilingeniør &mdash; Styreleder, Havklu AS</span>
                     <span class="en">Civil engineer &mdash; Chairman, Havklu AS</span>
                 </p>
-                <p class="text-base leading-relaxed" style="color: #94a3b8;">
-                    <span class="no">Med tiår med erfaring innen merdkonstruksjoner og marin teknologi har Olav utviklet Folkemerden som et svar på industriens mest presserende utfordringer. Hans track record inkluderer konstruksjonen som ble forgjengeren &mdash; en stålmerd som faktisk ble bygget og fikk fire statlige utviklingskonsesjoner.</span>
-                    <span class="en">With decades of experience in cage construction and marine technology, Olav developed Folkemerden as an answer to the industry's most pressing challenges. His track record includes the construction that became the predecessor &mdash; a steel cage that was actually built and received four government development concessions.</span>
+                <p class="text-base leading-relaxed" style="color:var(--text-2);">
+                    <span class="no">Med tiår med erfaring innen konstruksjon av oppdrettsanlegg og marin teknologi har Olav utviklet Folkemerden som et svar på industriens mest presserende utfordringer. Han er tilgjengelig for tekniske samtaler og partnerdialoger.</span>
+                    <span class="en">With decades of experience in aquaculture construction and marine technology, Olav developed Folkemerden as an answer to the industry's most pressing challenges. He is available for technical discussions and partner dialogues.</span>
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ─── CONTACT ───────────────────────────────────────────────── -->
-<section class="py-28 px-6" style="background: #071829;" id="kontakt">
-    <div class="max-w-2xl mx-auto text-center">
-        <p class="section-label mb-3">
-            <span class="no">Ta kontakt</span><span class="en">Contact</span>
-        </p>
-        <h2 class="font-black text-white mb-5" style="font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1;">
-            <span class="no">Interessert?<br>La oss snakke.</span>
-            <span class="en">Interested?<br>Let's talk.</span>
+<!-- ─── 10. PARTNER CTA ─────────────────────────────────────── -->
+<section id="partner" class="py-28 px-6 fade-in" style="background:linear-gradient(160deg, #061624 0%, var(--bg-1) 100%);">
+    <div class="max-w-3xl mx-auto text-center">
+        <span class="label mb-4">
+            <span class="no">Bli vår partner</span><span class="en">Become our partner</span>
+        </span>
+        <h2 class="h-section text-white mb-6">
+            <span class="no">Havklu søker industriell partner for prosjektering, verifikasjon og første pilot</span>
+            <span class="en">Havklu is seeking an industrial partner for engineering, verification and first pilot</span>
         </h2>
-        <p class="text-lg leading-relaxed mb-12" style="color: #94a3b8;">
-            <span class="no">Havklu AS søker samarbeidspartnere &mdash; oppdrettsselskaper, investorer og produksjonspartnere &mdash; som vil være med å realisere Folkemerden.</span>
-            <span class="en">Havklu AS is looking for partners &mdash; aquaculture companies, investors, and production partners &mdash; who want to help realise Folkemerden.</span>
+        <p class="text-lg leading-relaxed mb-10" style="color:var(--text-2);">
+            <span class="no">Vi ser etter oppdrettsselskaper, industri- og produksjonspartnere eller strategiske investorer som ønsker å bidra til å ta Folkemerden fra patentert konsept til første fullskala enhet.</span>
+            <span class="en">We are looking for aquaculture companies, industrial and production partners, or strategic investors who want to help take Folkemerden from patented concept to first full-scale unit.</span>
         </p>
-
-        <div class="grid sm:grid-cols-2 gap-4 mb-8">
-            <a href="mailto:oklungreseth@gmail.com"
-               class="rounded-2xl p-5 flex items-center gap-4 transition-all hover:scale-105 hover:border-sky-500"
-               style="background: #04111e; border: 1px solid #1a3557;">
-                <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                     style="background: rgba(14,165,233,0.1);">
-                    <svg class="w-5 h-5" fill="none" stroke="#0ea5e9" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                    </svg>
-                </div>
-                <div class="text-left">
-                    <div class="text-xs font-semibold mb-0.5" style="color: #64748b;">E-POST</div>
-                    <div class="text-sm font-semibold text-white">oklungreseth@gmail.com</div>
-                </div>
+        <div class="flex flex-wrap gap-4 justify-center">
+            <a href="#kontakt" class="btn-p">
+                <span class="no">Be om teknisk brief</span>
+                <span class="en">Request technical brief</span>
             </a>
-
-            <a href="tel:+4791368866"
-               class="rounded-2xl p-5 flex items-center gap-4 transition-all hover:scale-105 hover:border-sky-500"
-               style="background: #04111e; border: 1px solid #1a3557;">
-                <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                     style="background: rgba(14,165,233,0.1);">
-                    <svg class="w-5 h-5" fill="none" stroke="#0ea5e9" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                    </svg>
-                </div>
-                <div class="text-left">
-                    <div class="text-xs font-semibold mb-0.5" style="color: #64748b;">TELEFON</div>
-                    <div class="text-sm font-semibold text-white">+47 913 68 866</div>
-                </div>
+            <a href="#kontakt" class="btn-s">
+                <span class="no">Diskuter pilotmulighet</span>
+                <span class="en">Discuss pilot opportunity</span>
             </a>
-        </div>
-
-        <div class="rounded-2xl p-6" style="background: linear-gradient(135deg, rgba(14,165,233,0.08), rgba(14,165,233,0.03)); border: 1px solid rgba(14,165,233,0.2);">
-            <p class="font-bold text-white">Olav Klungreseth</p>
-            <p class="text-sm mt-1" style="color: #94a3b8;">
-                <span class="no">Sivilingeniør &mdash; Styreleder, Havklu AS</span>
-                <span class="en">Civil engineer &mdash; Chairman, Havklu AS</span>
-            </p>
         </div>
     </div>
 </section>
 
-<!-- ─── FOOTER ────────────────────────────────────────────────── -->
-<footer class="py-8 px-6" style="background: #04111e; border-top: 1px solid #1a3557;">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+<!-- ─── 11. KONTAKT ─────────────────────────────────────────── -->
+<section id="kontakt" class="py-28 px-6 fade-in" style="background:var(--bg-2);">
+    <div class="max-w-xl mx-auto">
+        <div class="text-center mb-10">
+            <span class="label mb-3">
+                <span class="no">Kontakt</span><span class="en">Contact</span>
+            </span>
+            <h2 class="h-section text-white mb-4">
+                <span class="no">Ta kontakt med Havklu</span>
+                <span class="en">Get in touch with Havklu</span>
+            </h2>
+            <p class="text-lg" style="color:var(--text-2);">
+                <span class="no">Vi svarer på henvendelser fra oppdrettsselskaper, investorer og potensielle partnere.</span>
+                <span class="en">We respond to enquiries from aquaculture companies, investors and potential partners.</span>
+            </p>
+        </div>
+
+        <div class="rounded-2xl p-8" style="background:var(--bg-3); border:1px solid var(--border);">
+            <div class="flex items-center gap-4 mb-7 pb-7" style="border-bottom:1px solid var(--border);">
+                <div class="w-14 h-14 rounded-xl flex items-center justify-center text-xl font-black flex-shrink-0"
+                     style="background:var(--accent); color:var(--bg-1);">OK</div>
+                <div>
+                    <div class="font-bold text-white text-lg">Olav Klungreseth</div>
+                    <div class="text-sm font-semibold" style="color:var(--accent);">
+                        <span class="no">Sivilingeniør &mdash; Styreleder, Havklu AS</span>
+                        <span class="en">Civil engineer &mdash; Chairman, Havklu AS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <a href="mailto:oklungreseth@gmail.com"
+                   class="flex items-center gap-4 p-4 rounded-xl transition-all hover:border-sky-500"
+                   style="background:var(--bg-2); border:1px solid var(--border);"
+                   aria-label="Send e-post til oklungreseth@gmail.com">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--accent-bg);">
+                        <svg class="w-5 h-5" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    </div>
+                    <div>
+                        <div class="text-xs font-semibold mb-0.5" style="color:var(--text-3);">E-POST</div>
+                        <div class="text-sm font-semibold text-white">oklungreseth@gmail.com</div>
+                    </div>
+                </a>
+
+                <a href="tel:+4791368866"
+                   class="flex items-center gap-4 p-4 rounded-xl transition-all hover:border-sky-500"
+                   style="background:var(--bg-2); border:1px solid var(--border);"
+                   aria-label="Ring +47 91368866">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--accent-bg);">
+                        <svg class="w-5 h-5" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    </div>
+                    <div>
+                        <div class="text-xs font-semibold mb-0.5" style="color:var(--text-3);">TELEFON</div>
+                        <div class="text-sm font-semibold text-white">+47 913 68 866</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <p class="text-xs text-center mt-5" style="color:var(--text-3);">
+            <span class="no">Personopplysninger du deler i kontakt med Havklu AS brukes kun til å besvare din henvendelse, i tråd med gjeldende personvernlovgivning.</span>
+            <span class="en">Personal data shared when contacting Havklu AS is used only to respond to your enquiry, in accordance with applicable data protection legislation.</span>
+        </p>
+    </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════════ -->
+<footer style="background:var(--bg-1); border-top:1px solid var(--border);">
+    <div class="max-w-7xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div class="flex items-baseline gap-2">
             <span class="font-black text-white">Folkemerden</span>
-            <span class="text-xs" style="color: #0ea5e9;">by Havklu AS</span>
+            <span class="text-xs font-semibold" style="color:var(--accent);">by Havklu AS</span>
         </div>
-        <p class="text-sm text-center" style="color: #64748b;">
+        <p class="text-sm text-center" style="color:var(--text-3);">
             &copy; 2026 Havklu AS &mdash; Patent 347371 &mdash;
             <span class="no">Alle rettigheter reservert</span>
             <span class="en">All rights reserved</span>
@@ -665,13 +1015,20 @@
 </footer>
 
 <script>
+    // Language toggle
     function setLang(lang) {
         document.documentElement.lang = lang;
-        const btnNo = document.getElementById('btn-no');
-        const btnEn = document.getElementById('btn-en');
-        btnNo.classList.toggle('active', lang === 'no');
-        btnEn.classList.toggle('active', lang === 'en');
+        document.getElementById('btn-no').classList.toggle('active', lang === 'no');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        document.getElementById('btn-no').setAttribute('aria-pressed', lang === 'no');
+        document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
     }
+
+    // Scroll fade-in
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
