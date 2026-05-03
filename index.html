@@ -172,101 +172,134 @@
             mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 0%, transparent 72%);
             -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 0%, transparent 72%);
         }
-        .momentum-line {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            align-items: center;
-            gap: 0;
-            max-width: 860px;
-            margin: 0 auto 2.5rem;
-            color: var(--text-2);
+        .why-insight-wall {
             position: relative;
+            display: grid;
+            gap: .85rem;
+            max-width: 1080px;
+            margin: 0 auto 2rem;
         }
-        .momentum-line::before {
+        .why-insight-wall::before {
             content: "";
             position: absolute;
-            left: 13%;
-            right: 13%;
-            top: 50%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(14,165,183,.55), transparent);
+            left: 18%;
+            top: 1.3rem;
+            bottom: 1.3rem;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, rgba(14,165,183,.36), transparent);
         }
-        .momentum-step {
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: .75rem 1rem;
-            border: 1px solid rgba(14,165,183,.24);
-            border-radius: 999px;
-            background: rgba(255,255,255,.86);
-            box-shadow: 0 10px 28px rgba(14,50,80,.05);
-            font-size: .78rem;
-            font-weight: 900;
-            line-height: 1.25;
+        .why-insight-row {
             position: relative;
-            z-index: 1;
-        }
-        .momentum-step::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: .55rem;
-            background: var(--accent);
-            box-shadow: 0 0 0 5px rgba(14,165,183,.1);
-        }
-        .driver-card {
-            position: relative;
+            display: grid;
+            grid-template-columns: minmax(150px, .42fr) minmax(0, 1fr) minmax(220px, .72fr);
+            gap: 1.35rem;
+            align-items: stretch;
             overflow: hidden;
-            background: rgba(255,255,255,.72);
             border: 1px solid rgba(14,165,183,.2);
-            border-radius: 18px;
-            padding: 1.35rem 1.25rem 1.25rem;
-            box-shadow: 0 14px 36px rgba(14,50,80,.07);
+            border-radius: 22px;
+            background: linear-gradient(135deg, rgba(255,255,255,.86), rgba(242,249,252,.76));
+            box-shadow: 0 16px 38px rgba(14,50,80,.07);
+            padding: 1.15rem;
             transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
         }
-        .driver-card::before {
+        .why-insight-row::before {
             content: "";
             position: absolute;
             inset: 0 auto 0 0;
-            width: 4px;
-            background: linear-gradient(180deg, rgba(14,165,183,.95), rgba(14,165,183,.08));
+            width: 5px;
+            background: linear-gradient(180deg, rgba(14,165,183,.95), rgba(14,165,183,.1));
         }
-        .driver-card::after {
-            content: attr(data-index);
-            position: absolute;
-            right: .9rem;
-            top: .65rem;
-            color: rgba(14,50,80,.08);
-            font-size: 3.4rem;
-            line-height: 1;
-            font-weight: 950;
-            letter-spacing: -.08em;
-        }
-        .driver-card:hover {
+        .why-insight-row:hover {
             transform: translateY(-2px);
             border-color: rgba(14,165,183,.36);
             box-shadow: 0 18px 42px rgba(14,50,80,.1);
         }
-        .driver-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
+        .why-signal {
+            position: relative;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
-            margin-bottom: 1.1rem;
-            color: var(--accent);
-            background:
-                radial-gradient(circle at 50% 50%, rgba(255,255,255,.95) 0 28%, transparent 29%),
-                conic-gradient(from 30deg, rgba(14,165,183,.18), rgba(14,165,183,.04), rgba(14,165,183,.22));
-            border: 1px solid rgba(14,165,183,.28);
+            border-radius: 16px;
+            background: rgba(14,165,183,.07);
+            padding: 1rem;
+            min-height: 132px;
         }
-        .driver-icon svg {
-            width: 24px;
-            height: 24px;
+        .why-signal-label {
+            color: var(--accent);
+            font-size: .68rem;
+            font-weight: 950;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            margin-bottom: .55rem;
+        }
+        .why-signal-title {
+            color: var(--text-1);
+            font-size: clamp(1.15rem, 2vw, 1.55rem);
+            font-weight: 950;
+            line-height: 1.06;
+            letter-spacing: -.03em;
+        }
+        .why-response {
+            display: grid;
+            grid-template-columns: minmax(120px, .35fr) minmax(0, 1fr);
+            gap: 1.15rem;
+            align-items: center;
+            min-width: 0;
+        }
+        .why-response h3 {
+            color: var(--text-1);
+            font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+            font-weight: 950;
+            line-height: 1.08;
+            letter-spacing: -.035em;
+            margin-bottom: .55rem;
+        }
+        .why-response p {
+            color: var(--text-2);
+            font-size: .95rem;
+            line-height: 1.65;
+            max-width: 560px;
+        }
+        .why-proof {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(14,165,183,.16);
+            padding: .25rem .35rem .25rem 1rem;
+            color: var(--text-2);
+            font-size: .86rem;
+            line-height: 1.55;
+        }
+        .why-proof strong {
+            display: block;
+            color: var(--text-1);
+            font-size: .75rem;
+            font-weight: 950;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            margin-bottom: .35rem;
+        }
+        .why-diagram {
+            width: 112px;
+            height: 92px;
+            color: var(--accent);
+        }
+        .why-diagram path,
+        .why-diagram line,
+        .why-diagram circle,
+        .why-diagram rect {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .why-diagram .soft {
+            stroke: rgba(14,50,80,.24);
+        }
+        .why-diagram .fill-soft {
+            fill: rgba(14,165,183,.08);
+            stroke: rgba(14,165,183,.24);
         }
         .position-line {
             max-width: 960px;
@@ -278,13 +311,26 @@
         }
 
         @media (max-width: 768px) {
-            .momentum-line {
-                grid-template-columns: 1fr;
-                gap: .6rem;
-                margin-bottom: 2rem;
-            }
-            .momentum-line::before {
+            .why-insight-wall::before {
                 display: none;
+            }
+            .why-insight-row {
+                grid-template-columns: 1fr;
+                gap: .9rem;
+                padding: 1rem;
+            }
+            .why-response {
+                grid-template-columns: 1fr;
+                gap: .5rem;
+            }
+            .why-proof {
+                border-left: 0;
+                border-top: 1px solid rgba(14,165,183,.16);
+                padding: .85rem 0 0;
+            }
+            .why-diagram {
+                width: 92px;
+                height: 74px;
             }
         }
 
@@ -805,84 +851,124 @@
                 <span class="en">Why now?</span>
             </h2>
             <p class="text-lg leading-relaxed mx-auto" style="color:var(--text-2); max-width:720px;">
-                <span class="no">Oppdrett i sjø er på vei inn i en fase der teknologi må gi mer skjerming, mer forutsigbar drift og en realistisk vei fra konsept til produksjon.</span>
-                <span class="en">Sea-based aquaculture is entering a phase where technology must provide more shielding, more predictable operations and a realistic path from concept to production.</span>
+                <span class="no">Folkemerden er utviklet for oppdrettere som vil beholde sjøens fortrinn, men redusere eksponeringen som følger med åpne merder.</span>
+                <span class="en">Folkemerden is designed for farmers who want to keep the advantages of sea-based production while reducing the exposure that comes with open cages.</span>
             </p>
         </div>
 
-        <div class="momentum-line" aria-label="Market momentum">
-            <div class="momentum-step">
-                <span class="no">Presset øker</span>
-                <span class="en">Pressure is rising</span>
-            </div>
-            <div class="momentum-step">
-                <span class="no">Kravene skjerpes</span>
-                <span class="en">Requirements are tightening</span>
-            </div>
-            <div class="momentum-step">
-                <span class="no">Løsningen må tåle virkeligheten</span>
-                <span class="en">The solution must withstand reality</span>
-            </div>
-        </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-            <article class="driver-card" data-index="01">
-                <div class="driver-icon" aria-hidden="true">
-                    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 5h8l2 3v10l-6 3-6-3V8l2-3z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9.5 12 1.8 1.8 3.7-4"/></svg>
+        <div class="why-insight-wall" aria-label="Hvorfor markedet beveger seg nå">
+            <article class="why-insight-row">
+                <div class="why-signal">
+                    <div class="why-signal-label">
+                        <span class="no">Markedspress</span><span class="en">Market pressure</span>
+                    </div>
+                    <div class="why-signal-title">
+                        <span class="no">Biologien krever mer skjerming</span>
+                        <span class="en">Biology needs more shielding</span>
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">
-                    <span class="no">Regulering</span><span class="en">Regulation</span>
-                </h3>
-                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
-                    <span class="no">Krav til lus, rømming og utslipp gjør dokumenterbare løsninger mer verdifulle.</span>
-                    <span class="en">Requirements for lice control, escape prevention and emissions make documentable systems more valuable.</span>
-                </p>
+                <div class="why-response">
+                    <svg class="why-diagram" viewBox="0 0 120 92" aria-hidden="true">
+                        <path class="soft" d="M14 21c16 7 31 7 47 0s31-7 45 0"/>
+                        <path class="soft" d="M14 35c16 7 31 7 47 0s31-7 45 0"/>
+                        <rect class="fill-soft" x="42" y="11" width="30" height="66" rx="3"/>
+                        <path d="M72 13v62"/>
+                        <path d="M36 45h-18m18 14h-12m60-14h18m-18 14h12"/>
+                    </svg>
+                    <div>
+                        <h3>
+                            <span class="no">Tett barriere og kontrollert vanninntak</span>
+                            <span class="en">Tight barrier and controlled water intake</span>
+                        </h3>
+                        <p>
+                            <span class="no">Lus, smittepress og vannmiljø kan ikke bare behandles i etterkant. Folkemerden er utviklet for å redusere eksponering gjennom fysisk skjerming og kontrollert vannutskifting.</span>
+                            <span class="en">Lice, disease pressure and water conditions cannot only be handled after exposure. Folkemerden is designed to reduce exposure through physical shielding and controlled water exchange.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="why-proof">
+                    <strong><span class="no">Produktlogikk</span><span class="en">Product logic</span></strong>
+                    <span class="no">Barriere mot øvre vannlag, inntak/uttak på valgte dybder og lukket konstruksjon rundt fisken.</span>
+                    <span class="en">Barrier toward upper water layers, intake/outlet at selected depths and a closed structure around the fish.</span>
+                </div>
             </article>
 
-            <article class="driver-card" data-index="02">
-                <div class="driver-icon" aria-hidden="true">
-                    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.5 13c2.6-4.2 7.4-5.3 12.6-3.1L20.5 7v9.8l-4.4-2.8c-5.2 2.2-10 .9-12.6-3z"/><path stroke-linecap="round" d="M8 12h.01M12 8.5v-2M12 17.5v-2"/></svg>
+            <article class="why-insight-row">
+                <div class="why-signal">
+                    <div class="why-signal-label">
+                        <span class="no">Rammevilkår</span><span class="en">Operating conditions</span>
+                    </div>
+                    <div class="why-signal-title">
+                        <span class="no">Kravene flytter seg fra volum til kontroll</span>
+                        <span class="en">Requirements are moving from volume to control</span>
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">
-                    <span class="no">Biologi</span><span class="en">Biology</span>
-                </h3>
-                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
-                    <span class="no">Bedre kontroll på lusepress, sykdomseksponering og fiskevelferd blir et konkurransefortrinn.</span>
-                    <span class="en">Better control of lice pressure, disease exposure and fish welfare becomes a competitive advantage.</span>
-                </p>
+                <div class="why-response">
+                    <svg class="why-diagram" viewBox="0 0 120 92" aria-hidden="true">
+                        <rect class="fill-soft" x="29" y="16" width="62" height="48" rx="5"/>
+                        <path d="M41 32h38M41 45h26M41 58h18"/>
+                        <path d="m77 58 7 7 15-18"/>
+                        <path class="soft" d="M27 74h66"/>
+                    </svg>
+                    <div>
+                        <h3>
+                            <span class="no">Etterprøvbar konstruksjon</span>
+                            <span class="en">Verifiable construction</span>
+                        </h3>
+                        <p>
+                            <span class="no">Når krav til lus, rømming og utslipp skjerpes, øker verdien av løsninger som kan prosjekteres, beregnes og verifiseres mot tydelige egenskaper.</span>
+                            <span class="en">As requirements for lice control, escape prevention and emissions tighten, systems that can be engineered, calculated and verified against clear properties become more valuable.</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="why-proof">
+                    <strong><span class="no">Produktlogikk</span><span class="en">Product logic</span></strong>
+                    <span class="no">Slamoppsamling, stiv PE100-konstruksjon og ekstra fysisk rømmingssikring er del av samme systemtenkning.</span>
+                    <span class="en">Sludge collection, rigid PE100 construction and additional physical escape prevention are part of the same system logic.</span>
+                </div>
             </article>
 
-            <article class="driver-card" data-index="03">
-                <div class="driver-icon" aria-hidden="true">
-                    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 18.5h16M6 16V8m4 8v-5m4 5V6m4 10v-3"/><path stroke-linecap="round" stroke-linejoin="round" d="M6 8c3.5 3.8 8.2 3.8 12 0"/></svg>
+            <article class="why-insight-row">
+                <div class="why-signal">
+                    <div class="why-signal-label">
+                        <span class="no">Investeringscase</span><span class="en">Investment case</span>
+                    </div>
+                    <div class="why-signal-title">
+                        <span class="no">Lukket teknologi må kunne realiseres</span>
+                        <span class="en">Closed technology must be realizable</span>
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">
-                    <span class="no">Økonomi</span><span class="en">Economics</span>
-                </h3>
-                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
-                    <span class="no">Lukket teknologi må ikke bare fungere - den må kunne finansieres, bygges og driftes realistisk.</span>
-                    <span class="en">Closed technology must not only work - it must be financeable, buildable and realistic to operate.</span>
-                </p>
-            </article>
-
-            <article class="driver-card" data-index="04">
-                <div class="driver-icon" aria-hidden="true">
-                    <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7h7c4.5 0 8 3.5 8 8v1"/><path stroke-linecap="round" stroke-linejoin="round" d="m16 13 3 3 3-3M4 17h7"/></svg>
+                <div class="why-response">
+                    <svg class="why-diagram" viewBox="0 0 120 92" aria-hidden="true">
+                        <path class="soft" d="M18 70h84"/>
+                        <path d="M25 66V28l19-10 19 10v38"/>
+                        <path d="M63 66V32l18-9 18 9v34"/>
+                        <path d="M32 38h24M32 50h24M70 42h22M70 54h22"/>
+                        <circle class="fill-soft" cx="88" cy="22" r="6"/>
+                    </svg>
+                    <div>
+                        <h3>
+                            <span class="no">Kjent utstyr, enkel byggemetode og trinnvis innfasing</span>
+                            <span class="en">Known equipment, simple build method and stepwise deployment</span>
+                        </h3>
+                        <p>
+                            <span class="no">Mange lukkede konsepter blir krevende å finansiere eller skalere. Folkemerden er tenkt som en mer jordnær vei inn i lukket produksjon, med fleksible størrelser og integrering mot eksisterende drift.</span>
+                            <span class="en">Many closed-containment concepts become difficult to finance or scale. Folkemerden is conceived as a more grounded path into closed production, with flexible sizes and integration with existing operations.</span>
+                        </p>
+                    </div>
                 </div>
-                <h3 class="text-xl font-bold text-white mb-3">
-                    <span class="no">Overgang</span><span class="en">Transition</span>
-                </h3>
-                <p class="text-sm leading-relaxed" style="color:var(--text-2);">
-                    <span class="no">Veien inn i lukket produksjon kan skje trinnvis, innenfor eksisterende produksjonslogikk.</span>
-                    <span class="en">The path into closed production can be stepwise, within existing production logic.</span>
-                </p>
+                <div class="why-proof">
+                    <strong><span class="no">Produktlogikk</span><span class="en">Product logic</span></strong>
+                    <span class="no">Termoplast, sveiste plater/stendere og innmontering av utprøvd kvalitetsutstyr peker mot industriell gjennomføring.</span>
+                    <span class="en">Thermoplastic, welded plates/stiffeners and integration of proven quality equipment point toward industrial execution.</span>
+                </div>
             </article>
         </div>
 
         <div class="position-line rounded-2xl px-6 py-6 text-center">
             <p class="text-xl font-extrabold leading-relaxed mx-auto" style="color:var(--text-1); max-width:860px;">
-                <span class="no">Folkemerden er utviklet for neste fase i sjøbasert oppdrett: mer skjerming, mer styring og en løsning som kan tas fra tegnebord til industri.</span>
-                <span class="en">Folkemerden is designed for the next phase of sea-based aquaculture: more shielding, more control and a solution that can move from drawing board to industry.</span>
+                <span class="no">Folkemerden forsøker ikke å flytte oppdrettet bort fra sjøen. Den gir sjøbasert oppdrett et mer kontrollert skall.</span>
+                <span class="en">Folkemerden does not try to move aquaculture away from the sea. It gives sea-based farming a more controlled shell.</span>
             </p>
         </div>
     </div>
@@ -1008,15 +1094,15 @@
                              style="min-height:150px; background:var(--bg-3);">
                     </div>
                     <div class="img-frame">
-                        <img src="assets/folkemerd-drawing.png"
-                             alt="Konsepttegning av Folkemerden — sidevisning og tverrsnitt av referansemodell"
+                        <img src="assets/pe-modul-montert.png"
+                             alt="PE100-konstruksjonsdetalj — sylindermodul med synlige skjøtesveiser og stendere"
                              class="w-full object-contain"
                              style="min-height:150px; background:var(--bg-3);">
                     </div>
                 </div>
                 <p class="text-xs text-center" style="color:var(--text-3);">
-                    <span class="no">3D-modeller og konsepttegning. Referansemodell — endelig dimensjonering avhenger av lokalitet og krav.</span>
-                    <span class="en">3D models and concept drawing. Reference model — final dimensions subject to site conditions and requirements.</span>
+                    <span class="no">3D-modeller og konstruksjonsdetalj (PE100-modul med skjøtesveiser). Referansemodell — endelig dimensjonering avhenger av lokalitet og krav.</span>
+                    <span class="en">3D models and PE100 construction detail (module with weld seams). Reference model — final dimensions subject to site conditions and requirements.</span>
                 </p>
             </div>
         </div>
