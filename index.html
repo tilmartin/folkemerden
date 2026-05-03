@@ -206,7 +206,6 @@
             min-height: 210px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             overflow: hidden;
             border: 1px solid rgba(14,165,183,.2);
             border-radius: 24px;
@@ -248,33 +247,36 @@
             font-weight: 300;
             line-height: 1;
         }
-        .why-term-visual {
-            width: 92px;
-            height: 76px;
-            margin-bottom: 1.2rem;
-            color: var(--accent);
+        .why-term-media {
+            position: relative;
+            height: 154px;
+            margin: -.25rem -.25rem 1.2rem;
+            overflow: hidden;
+            border-radius: 20px;
+            background: #f5f5f6;
         }
-        .why-result .why-term-visual {
-            color: #67e8f9;
+        .why-term-media::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0) 70%, rgba(6,24,39,.04)),
+                radial-gradient(circle at 18% 10%, rgba(255,255,255,.36), transparent 36%);
+            pointer-events: none;
         }
-        .why-term-visual path,
-        .why-term-visual line,
-        .why-term-visual circle,
-        .why-term-visual rect,
-        .why-term-visual ellipse {
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        .why-result .why-term-media {
+            background: #f4f3f4;
         }
-        .why-term-visual .soft-fill {
-            fill: rgba(14,165,183,.08);
-            stroke: rgba(14,165,183,.28);
-        }
-        .why-result .why-term-visual .soft-fill {
-            fill: rgba(103,232,249,.12);
-            stroke: rgba(103,232,249,.42);
+        .why-term-media--sea { background: #f8f9fa; }
+        .why-term-media--control { background: #f5f5f6; }
+        .why-term-media--build { background: #f5f5f6; }
+        .why-term-media--folk { background: #f4f3f4; }
+        .why-term-media img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
+            padding: .35rem;
         }
         .why-term h3 {
             color: var(--text-1);
@@ -283,6 +285,9 @@
             line-height: 1.08;
             letter-spacing: -.035em;
             margin-bottom: .65rem;
+            min-height: 1.6em;
+            display: flex;
+            align-items: flex-start;
         }
         .why-result h3 {
             color: #ffffff;
@@ -526,6 +531,19 @@
 
         /* ── Image frame ── */
         .img-frame { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-3); }
+        .solution-cutout-frame {
+            background: #fff !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .solution-cutout-frame img {
+            width: 100%;
+            height: 100%;
+            min-height: 150px;
+            object-fit: contain;
+            background: #fff;
+        }
 
         /* ── prefers-reduced-motion ── */
         @media (prefers-reduced-motion: reduce) {
@@ -776,21 +794,18 @@
                 <span class="en">Not away from the sea.<br>More control at sea.</span>
             </h2>
             <p class="text-lg leading-relaxed mx-auto" style="color:var(--text-2); max-width:800px;">
-                <span class="no">Sjøen gir oppdrettet store fordeler: vannvolum, etablerte lokaliteter og kjent drift. Utfordringen er at åpne merder gir for liten kontroll på lus, smittepress, rømming og utslipp. Folkemerden er utviklet for å beholde sjøens fordeler - og gi produksjonen mer kontroll.</span>
+                <span class="no">Sjøen gir oppdrettet store fortrinn: vannvolum, etablerte lokaliteter og kjent drift. Utfordringen er at åpne merder gir for liten kontroll på lus, smittepress, rømming og utslipp. Folkemerden er utviklet for å beholde sjøens fortrinn - og gi produksjonen mer kontroll.</span>
                 <span class="en">The sea offers major advantages for aquaculture: water volume, existing sites and familiar operations. The challenge is that open net pens provide too little control over lice pressure, disease exposure, escapes and emissions. Folkemerden is designed to keep the advantages of sea-based farming - while giving production more control.</span>
             </p>
         </div>
 
         <div class="why-equation" aria-label="Folkemerden som ligning">
             <article class="why-term">
-                <svg class="why-term-visual" viewBox="0 0 96 76" aria-hidden="true">
-                    <path d="M9 44c12-7 23-7 35 0s24 7 39 0"/>
-                    <path d="M9 58c12-7 23-7 35 0s24 7 39 0"/>
-                    <circle class="soft-fill" cx="70" cy="24" r="13"/>
-                    <path d="M25 34V18m11 20V12m11 22V21"/>
-                </svg>
+                <div class="why-term-media why-term-media--sea">
+                    <img src="1.png" alt="Skjermet kystmiljø som illustrerer sjøens fortrinn" loading="lazy">
+                </div>
                 <div>
-                    <h3><span class="no">Sjøens fordeler</span><span class="en">The sea's advantages</span></h3>
+                    <h3><span class="no">Sjøens fortrinn</span><span class="en">The sea's advantages</span></h3>
                     <p>
                         <span class="no">Naturlig vannvolum, etablerte lokaliteter og kjent drift.</span>
                         <span class="en">Natural water volume, existing sites and familiar operations.</span>
@@ -801,11 +816,9 @@
             <div class="why-operator" aria-hidden="true">+</div>
 
             <article class="why-term">
-                <svg class="why-term-visual" viewBox="0 0 96 76" aria-hidden="true">
-                    <path class="soft-fill" d="M38 10h20l8 8v42l-18 8-18-8V18z"/>
-                    <path d="M30 31H12m18 16H18m48-16h18m-18 16h12"/>
-                    <path d="M58 13v51"/>
-                </svg>
+                <div class="why-term-media why-term-media--control">
+                    <img src="2.png" alt="Illustrasjon av mer kontroll og skjerming i sjøbasert oppdrett" loading="lazy">
+                </div>
                 <div>
                     <h3><span class="no">Mer kontroll</span><span class="en">More control</span></h3>
                     <p>
@@ -818,11 +831,9 @@
             <div class="why-operator" aria-hidden="true">+</div>
 
             <article class="why-term">
-                <svg class="why-term-visual" viewBox="0 0 96 76" aria-hidden="true">
-                    <rect class="soft-fill" x="18" y="16" width="60" height="42" rx="4"/>
-                    <path d="M28 29h40M28 43h40M48 16v42"/>
-                    <path d="M20 64h56"/>
-                </svg>
+                <div class="why-term-media why-term-media--build">
+                    <img src="3a.png" alt="Illustrasjon av byggbar løsning med konstruksjon og teknisk utstyr" loading="lazy">
+                </div>
                 <div>
                     <h3><span class="no">Byggbar løsning</span><span class="en">Buildable solution</span></h3>
                     <p>
@@ -835,12 +846,9 @@
             <div class="why-operator" aria-hidden="true">=</div>
 
             <article class="why-term why-result">
-                <svg class="why-term-visual" viewBox="0 0 96 76" aria-hidden="true">
-                    <ellipse class="soft-fill" cx="48" cy="36" rx="31" ry="20"/>
-                    <path d="M17 36c12 9 50 9 62 0"/>
-                    <path d="M33 52l-8 13M63 52l8 13M48 56v12"/>
-                    <path d="M31 26h34"/>
-                </svg>
+                <div class="why-term-media why-term-media--folk">
+                    <img src="4b.png" alt="Folkemerden som en mer kontrollert vei videre for sjøbasert oppdrett" loading="lazy">
+                </div>
                 <div>
                     <h3>Folkemerden</h3>
                     <p>
@@ -853,7 +861,7 @@
 
         <div class="why-payoff rounded-2xl px-6 py-6 text-center">
             <p class="text-xl font-extrabold leading-relaxed mx-auto" style="color:var(--text-1); max-width:900px;">
-                <span class="no">Folkemerden er utviklet for å gi oppdrettsnæringen det den trenger nå: mer kontroll - uten å gi opp sjøens fordeler.</span>
+                <span class="no">Folkemerden er utviklet for å gi oppdrettsnæringen det den trenger nå: mer kontroll - uten å gi opp sjøens fortrinn.</span>
                 <span class="en">Folkemerden is designed to give the industry what it needs now: more control - without giving up the advantages of the sea.</span>
             </p>
         </div>
@@ -1048,11 +1056,10 @@
                              class="w-full object-contain"
                              style="min-height:150px; background:var(--bg-3);">
                     </div>
-                    <div class="img-frame">
-                        <img src="assets/folkemerd-front.png"
-                             alt="Folkemerden lukket variant — frontalvisning av sylindrisk termoplastkonstruksjon"
-                             class="w-full object-contain"
-                             style="min-height:150px; background:var(--bg-3);">
+                    <div class="img-frame solution-cutout-frame">
+                        <img src="plastcutout.png"
+                             alt="Folkemerden lukket variant — utsnitt av plastkonstruksjon på hvit bakgrunn"
+                             class="w-full object-contain">
                     </div>
                 </div>
                 <p class="text-xs text-center" style="color:var(--text-3);">
