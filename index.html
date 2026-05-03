@@ -152,185 +152,211 @@
         .light-sec .card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(14,165,183,.12); }
         .light-sec .img-frame { background: #e8f2f8; border-color: #cde3ef; }
 
-        /* ── Why now: market momentum ── */
+        /* ── Why now: controlled interface equation ── */
         .why-momentum {
             position: relative;
             overflow: hidden;
             background:
-                linear-gradient(135deg, rgba(255,255,255,.94), rgba(232,244,250,.9)),
-                radial-gradient(ellipse 70% 55% at 12% 8%, rgba(14,165,183,.12), transparent 62%);
+                radial-gradient(ellipse 72% 45% at 18% 4%, rgba(14,165,183,.16), transparent 64%),
+                radial-gradient(ellipse 54% 38% at 82% 22%, rgba(49,208,197,.12), transparent 68%),
+                linear-gradient(135deg, rgba(255,255,255,.96), rgba(229,242,248,.92));
         }
         .why-momentum::before {
             content: "";
             position: absolute;
             inset: 0;
             pointer-events: none;
-            opacity: .42;
+            opacity: .72;
             background:
-                radial-gradient(ellipse 42% 28% at 76% 24%, rgba(14,165,183,.1), transparent 68%),
-                linear-gradient(115deg, transparent 0 44%, rgba(14,165,183,.06) 44.2% 44.7%, transparent 45% 100%);
-            mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 0%, transparent 72%);
-            -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 0%, transparent 72%);
+                linear-gradient(176deg, transparent 0 48%, rgba(14,165,183,.08) 48.2% 48.7%, transparent 49% 100%),
+                radial-gradient(ellipse 52% 16% at 55% 58%, rgba(14,165,183,.08), transparent 72%);
+            mask-image: radial-gradient(ellipse 88% 74% at 50% 42%, #000 0%, transparent 78%);
+            -webkit-mask-image: radial-gradient(ellipse 88% 74% at 50% 42%, #000 0%, transparent 78%);
         }
-        .why-insight-wall {
+        .why-headline {
+            max-width: 880px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: clamp(2.35rem, 6vw, 5.15rem);
+            line-height: .94;
+            letter-spacing: -.065em;
+            font-weight: 950;
+            text-wrap: balance;
+        }
+        .why-equation {
             position: relative;
             display: grid;
-            gap: .85rem;
-            max-width: 1080px;
-            margin: 0 auto 2rem;
+            grid-template-columns: minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1.08fr);
+            gap: .8rem;
+            align-items: stretch;
+            margin: clamp(2.3rem, 5vw, 4rem) auto 1.3rem;
         }
-        .why-insight-wall::before {
+        .why-equation::before {
             content: "";
             position: absolute;
-            left: 18%;
-            top: 1.3rem;
-            bottom: 1.3rem;
-            width: 1px;
-            background: linear-gradient(180deg, transparent, rgba(14,165,183,.36), transparent);
+            left: 6%;
+            right: 6%;
+            top: 52%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(14,165,183,.34), transparent);
         }
-        .why-insight-row {
+        .why-term {
             position: relative;
-            display: grid;
-            grid-template-columns: minmax(150px, .42fr) minmax(0, 1fr) minmax(220px, .72fr);
-            gap: 1.35rem;
-            align-items: stretch;
+            z-index: 1;
+            min-height: 210px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             overflow: hidden;
             border: 1px solid rgba(14,165,183,.2);
-            border-radius: 22px;
-            background: linear-gradient(135deg, rgba(255,255,255,.86), rgba(242,249,252,.76));
+            border-radius: 24px;
+            background: rgba(255,255,255,.76);
             box-shadow: 0 16px 38px rgba(14,50,80,.07);
-            padding: 1.15rem;
+            padding: 1.35rem;
             transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
         }
-        .why-insight-row::before {
+        .why-term::before {
             content: "";
             position: absolute;
-            inset: 0 auto 0 0;
-            width: 5px;
-            background: linear-gradient(180deg, rgba(14,165,183,.95), rgba(14,165,183,.1));
+            inset: auto 1rem 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(14,165,183,.5), transparent);
         }
-        .why-insight-row:hover {
+        .why-term:hover {
             transform: translateY(-2px);
             border-color: rgba(14,165,183,.36);
             box-shadow: 0 18px 42px rgba(14,50,80,.1);
         }
-        .why-signal {
+        .why-result {
+            color: var(--text-1);
+            background:
+                radial-gradient(circle at 20% 16%, rgba(49,208,197,.36), transparent 13rem),
+                linear-gradient(145deg, #0b3348, #061827);
+            border-color: rgba(49,208,197,.34);
+            box-shadow: 0 24px 62px rgba(6,24,39,.22);
+        }
+        .why-result::before {
+            background: linear-gradient(90deg, transparent, rgba(49,208,197,.72), transparent);
+        }
+        .why-operator {
             position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-radius: 16px;
-            background: rgba(14,165,183,.07);
-            padding: 1rem;
-            min-height: 132px;
-        }
-        .why-signal-label {
-            color: var(--accent);
-            font-size: .68rem;
-            font-weight: 950;
-            letter-spacing: .15em;
-            text-transform: uppercase;
-            margin-bottom: .55rem;
-        }
-        .why-signal-title {
-            color: var(--text-1);
-            font-size: clamp(1.15rem, 2vw, 1.55rem);
-            font-weight: 950;
-            line-height: 1.06;
-            letter-spacing: -.03em;
-        }
-        .why-response {
+            z-index: 2;
             display: grid;
-            grid-template-columns: minmax(120px, .35fr) minmax(0, 1fr);
-            gap: 1.15rem;
-            align-items: center;
-            min-width: 0;
+            place-items: center;
+            color: var(--accent);
+            font-size: clamp(1.8rem, 3.4vw, 3.25rem);
+            font-weight: 300;
+            line-height: 1;
         }
-        .why-response h3 {
-            color: var(--text-1);
-            font-size: clamp(1.25rem, 2.2vw, 1.75rem);
-            font-weight: 950;
-            line-height: 1.08;
-            letter-spacing: -.035em;
-            margin-bottom: .55rem;
-        }
-        .why-response p {
-            color: var(--text-2);
-            font-size: .95rem;
-            line-height: 1.65;
-            max-width: 560px;
-        }
-        .why-proof {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border-left: 1px solid rgba(14,165,183,.16);
-            padding: .25rem .35rem .25rem 1rem;
-            color: var(--text-2);
-            font-size: .86rem;
-            line-height: 1.55;
-        }
-        .why-proof strong {
-            display: block;
-            color: var(--text-1);
-            font-size: .75rem;
-            font-weight: 950;
-            letter-spacing: .13em;
-            text-transform: uppercase;
-            margin-bottom: .35rem;
-        }
-        .why-diagram {
-            width: 112px;
-            height: 92px;
+        .why-term-visual {
+            width: 92px;
+            height: 76px;
+            margin-bottom: 1.2rem;
             color: var(--accent);
         }
-        .why-diagram path,
-        .why-diagram line,
-        .why-diagram circle,
-        .why-diagram rect {
+        .why-result .why-term-visual {
+            color: #67e8f9;
+        }
+        .why-term-visual path,
+        .why-term-visual line,
+        .why-term-visual circle,
+        .why-term-visual rect,
+        .why-term-visual ellipse {
             fill: none;
             stroke: currentColor;
-            stroke-width: 1.8;
+            stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-        .why-diagram .soft {
-            stroke: rgba(14,50,80,.24);
-        }
-        .why-diagram .fill-soft {
+        .why-term-visual .soft-fill {
             fill: rgba(14,165,183,.08);
-            stroke: rgba(14,165,183,.24);
+            stroke: rgba(14,165,183,.28);
         }
-        .position-line {
-            max-width: 960px;
-            margin-left: auto;
-            margin-right: auto;
+        .why-result .why-term-visual .soft-fill {
+            fill: rgba(103,232,249,.12);
+            stroke: rgba(103,232,249,.42);
+        }
+        .why-term h3 {
+            color: var(--text-1);
+            font-size: clamp(1.12rem, 2vw, 1.45rem);
+            font-weight: 950;
+            line-height: 1.08;
+            letter-spacing: -.035em;
+            margin-bottom: .65rem;
+        }
+        .why-result h3 {
+            color: #ffffff;
+        }
+        .why-term p {
+            color: var(--text-2);
+            font-size: .92rem;
+            line-height: 1.55;
+        }
+        .why-result p {
+            color: rgba(237,244,249,.82);
+        }
+        .why-market-strip {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1px;
+            overflow: hidden;
+            max-width: 880px;
+            margin: 1.8rem auto 0;
             border: 1px solid rgba(14,165,183,.18);
+            border-radius: 18px;
+            background: rgba(14,165,183,.16);
+        }
+        .why-market-item {
+            background: rgba(255,255,255,.68);
+            padding: 1rem 1.1rem;
+        }
+        .why-market-item strong {
+            display: block;
+            color: var(--accent);
+            font-size: .72rem;
+            font-weight: 950;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            margin-bottom: .35rem;
+        }
+        .why-market-item p {
+            color: var(--text-2);
+            font-size: .86rem;
+            font-weight: 700;
+            line-height: 1.45;
+        }
+        .why-payoff {
+            max-width: 980px;
+            margin: 2rem auto 0;
+            border: 1px solid rgba(14,165,183,.2);
+            border-radius: 22px;
             background: linear-gradient(135deg, rgba(255,255,255,.74), rgba(236,249,251,.68));
             box-shadow: 0 16px 38px rgba(14,50,80,.06);
         }
 
-        @media (max-width: 768px) {
-            .why-insight-wall::before {
+        @media (max-width: 1100px) {
+            .why-equation {
+                grid-template-columns: 1fr;
+                max-width: 640px;
+            }
+            .why-equation::before {
                 display: none;
             }
-            .why-insight-row {
+            .why-operator {
+                min-height: 24px;
+                font-size: 1.8rem;
+            }
+            .why-term {
+                min-height: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .why-market-strip {
                 grid-template-columns: 1fr;
-                gap: .9rem;
-                padding: 1rem;
             }
-            .why-response {
-                grid-template-columns: 1fr;
-                gap: .5rem;
-            }
-            .why-proof {
-                border-left: 0;
-                border-top: 1px solid rgba(14,165,183,.16);
-                padding: .85rem 0 0;
-            }
-            .why-diagram {
-                width: 92px;
-                height: 74px;
+            .why-headline {
+                letter-spacing: -.05em;
             }
         }
 
@@ -770,7 +796,121 @@
     </div>
 </section>
 
-<!-- ─── 2. UTFORDRINGEN ── (light) ───────────────────────────── -->
+<!-- ─── 2. HVORFOR NÅ ── (light) ─────────────────────────────── -->
+<section id="hvorfor-na" class="light-sec why-momentum py-28 px-6 fade-in">
+    <div class="max-w-7xl mx-auto relative">
+        <div class="max-w-4xl mx-auto text-center mb-12">
+            <span class="label mb-4">
+                <span class="no">MARKEDET BEVEGER SEG</span>
+                <span class="en">THE MARKET IS MOVING</span>
+            </span>
+            <h2 class="why-headline text-white mb-6">
+                <span class="no">Ikke bort fra sjøen.<br>Kontroll på grensesnittet.</span>
+                <span class="en">Not away from the sea.<br>Control at the interface.</span>
+            </h2>
+            <p class="text-lg leading-relaxed mx-auto" style="color:var(--text-2); max-width:800px;">
+                <span class="no">Sjøen gir oppdrettet store fortrinn: volum, vann, etablerte lokaliteter og kjent drift. Utfordringen er den åpne eksponeringen mellom fisk og omgivelser. Folkemerden er utviklet for å beholde sjøens fortrinn &mdash; og kontrollere det som må kontrolleres.</span>
+                <span class="en">The sea gives aquaculture major advantages: water volume, existing sites and familiar operations. The challenge is the open exposure between fish and surroundings. Folkemerden is designed to keep the advantages of sea-based farming &mdash; while controlling what needs to be controlled.</span>
+            </p>
+        </div>
+
+        <div class="why-equation" aria-label="Folkemerden som ligning">
+            <article class="why-term">
+                <svg class="why-term-visual" viewBox="0 0 96 76" aria-hidden="true">
+                    <path d="M9 44c12-7 23-7 35 0s24 7 39 0"/>
+                    <path d="M9 58c12-7 23-7 35 0s24 7 39 0"/>
+                    <circle class="soft-fill" cx="70" cy="24" r="13"/>
+                    <path d="M25 34V18m11 20V12m11 22V21"/>
+                </svg>
+                <div>
+                    <h3><span class="no">Sjøens fortrinn</span><span class="en">The sea's advantages</span></h3>
+                    <p>
+                        <span class="no">Naturlig vannvolum, etablerte lokaliteter og kjent drift.</span>
+                        <span class="en">Natural water volume, existing sites and familiar operations.</span>
+                    </p>
+                </div>
+            </article>
+
+            <div class="why-operator" aria-hidden="true">+</div>
+
+            <article class="why-term">
+                <svg class="why-term-visual" viewBox="0 0 96 76" aria-hidden="true">
+                    <path class="soft-fill" d="M38 10h20l8 8v42l-18 8-18-8V18z"/>
+                    <path d="M30 31H12m18 16H18m48-16h18m-18 16h12"/>
+                    <path d="M58 13v51"/>
+                </svg>
+                <div>
+                    <h3><span class="no">Kontrollert grensesnitt</span><span class="en">Controlled interface</span></h3>
+                    <p>
+                        <span class="no">Tett barriere, kontrollert vanninntak, slamoppsamling og rømmingssikring.</span>
+                        <span class="en">Tight barrier, controlled water intake, sludge collection and escape prevention.</span>
+                    </p>
+                </div>
+            </article>
+
+            <div class="why-operator" aria-hidden="true">+</div>
+
+            <article class="why-term">
+                <svg class="why-term-visual" viewBox="0 0 96 76" aria-hidden="true">
+                    <rect class="soft-fill" x="18" y="16" width="60" height="42" rx="4"/>
+                    <path d="M28 29h40M28 43h40M48 16v42"/>
+                    <path d="M20 64h56"/>
+                </svg>
+                <div>
+                    <h3><span class="no">Industriell byggbarhet</span><span class="en">Industrial buildability</span></h3>
+                    <p>
+                        <span class="no">Termoplast, sveisbar konstruksjon, kjent utstyr og trinnvis innfasing.</span>
+                        <span class="en">Thermoplastic, weldable construction, known equipment and stepwise deployment.</span>
+                    </p>
+                </div>
+            </article>
+
+            <div class="why-operator" aria-hidden="true">=</div>
+
+            <article class="why-term why-result">
+                <svg class="why-term-visual" viewBox="0 0 96 76" aria-hidden="true">
+                    <ellipse class="soft-fill" cx="48" cy="36" rx="31" ry="20"/>
+                    <path d="M17 36c12 9 50 9 62 0"/>
+                    <path d="M33 52l-8 13M63 52l8 13M48 56v12"/>
+                    <path d="M31 26h34"/>
+                </svg>
+                <div>
+                    <h3>Folkemerden</h3>
+                    <p>
+                        <span class="no">En mer kontrollert vei videre for sjøbasert oppdrett.</span>
+                        <span class="en">A more controlled path forward for sea-based aquaculture.</span>
+                    </p>
+                </div>
+            </article>
+        </div>
+
+        <div class="why-market-strip" aria-label="Markedssignaler">
+            <div class="why-market-item">
+                <strong><span class="no">Norge</span><span class="en">Norway</span></strong>
+                <p>
+                    <span class="no">Lukkede, verifiserbare produksjonsenheter får økende regulatorisk verdi.</span>
+                    <span class="en">Closed, verifiable production units are gaining regulatory value.</span>
+                </p>
+            </div>
+            <div class="why-market-item">
+                <strong>British Columbia</strong>
+                <p>
+                    <span class="no">Åpne net-pen-anlegg fases ut innen 2029.</span>
+                    <span class="en">Open net-pen facilities are being phased out by 2029.</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="why-payoff rounded-2xl px-6 py-6 text-center">
+            <p class="text-xl font-extrabold leading-relaxed mx-auto" style="color:var(--text-1); max-width:900px;">
+                <span class="no">Folkemerden forsøker å gi oppdrettsnæringen det den trenger nå: mer kontroll &mdash; uten å gi opp sjøens fortrinn.</span>
+                <span class="en">Folkemerden aims to give the industry what it needs now: more control &mdash; without giving up the advantages of the sea.</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ─── 3. UTFORDRINGEN ── (light) ───────────────────────────── -->
 <section id="utfordringen" class="light-sec py-28 px-6 fade-in" style="background:#eaf3f9;">
     <div class="max-w-7xl mx-auto">
         <div class="text-center mb-14">
@@ -835,141 +975,6 @@
                     <span class="en">The closed variant is designed for sludge and feed residue collection via a funnel-and-pump system. The semi-closed variant is adapted to current conditions and site requirements.</span>
                 </p>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- ─── 3. HVORFOR NÅ ── (light) ─────────────────────────────── -->
-<section id="hvorfor-na" class="light-sec why-momentum py-28 px-6 fade-in">
-    <div class="max-w-7xl mx-auto relative">
-        <div class="max-w-3xl mx-auto text-center mb-12">
-            <span class="label mb-3">
-                <span class="no">Markedet beveger seg</span><span class="en">Market momentum</span>
-            </span>
-            <h2 class="h-section text-white mb-5">
-                <span class="no">Hvorfor nå?</span>
-                <span class="en">Why now?</span>
-            </h2>
-            <p class="text-lg leading-relaxed mx-auto" style="color:var(--text-2); max-width:720px;">
-                <span class="no">Folkemerden er utviklet for oppdrettere som vil beholde sjøens fortrinn, men redusere eksponeringen som følger med åpne merder.</span>
-                <span class="en">Folkemerden is designed for farmers who want to keep the advantages of sea-based production while reducing the exposure that comes with open cages.</span>
-            </p>
-        </div>
-
-        <div class="why-insight-wall" aria-label="Hvorfor markedet beveger seg nå">
-            <article class="why-insight-row">
-                <div class="why-signal">
-                    <div class="why-signal-label">
-                        <span class="no">Markedspress</span><span class="en">Market pressure</span>
-                    </div>
-                    <div class="why-signal-title">
-                        <span class="no">Biologien krever mer skjerming</span>
-                        <span class="en">Biology needs more shielding</span>
-                    </div>
-                </div>
-                <div class="why-response">
-                    <svg class="why-diagram" viewBox="0 0 120 92" aria-hidden="true">
-                        <path class="soft" d="M14 21c16 7 31 7 47 0s31-7 45 0"/>
-                        <path class="soft" d="M14 35c16 7 31 7 47 0s31-7 45 0"/>
-                        <rect class="fill-soft" x="42" y="11" width="30" height="66" rx="3"/>
-                        <path d="M72 13v62"/>
-                        <path d="M36 45h-18m18 14h-12m60-14h18m-18 14h12"/>
-                    </svg>
-                    <div>
-                        <h3>
-                            <span class="no">Tett barriere og kontrollert vanninntak</span>
-                            <span class="en">Tight barrier and controlled water intake</span>
-                        </h3>
-                        <p>
-                            <span class="no">Lus, smittepress og vannmiljø kan ikke bare behandles i etterkant. Folkemerden er utviklet for å redusere eksponering gjennom fysisk skjerming og kontrollert vannutskifting.</span>
-                            <span class="en">Lice, disease pressure and water conditions cannot only be handled after exposure. Folkemerden is designed to reduce exposure through physical shielding and controlled water exchange.</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="why-proof">
-                    <strong><span class="no">Produktlogikk</span><span class="en">Product logic</span></strong>
-                    <span class="no">Barriere mot øvre vannlag, inntak/uttak på valgte dybder og lukket konstruksjon rundt fisken.</span>
-                    <span class="en">Barrier toward upper water layers, intake/outlet at selected depths and a closed structure around the fish.</span>
-                </div>
-            </article>
-
-            <article class="why-insight-row">
-                <div class="why-signal">
-                    <div class="why-signal-label">
-                        <span class="no">Rammevilkår</span><span class="en">Operating conditions</span>
-                    </div>
-                    <div class="why-signal-title">
-                        <span class="no">Kravene flytter seg fra volum til kontroll</span>
-                        <span class="en">Requirements are moving from volume to control</span>
-                    </div>
-                </div>
-                <div class="why-response">
-                    <svg class="why-diagram" viewBox="0 0 120 92" aria-hidden="true">
-                        <rect class="fill-soft" x="29" y="16" width="62" height="48" rx="5"/>
-                        <path d="M41 32h38M41 45h26M41 58h18"/>
-                        <path d="m77 58 7 7 15-18"/>
-                        <path class="soft" d="M27 74h66"/>
-                    </svg>
-                    <div>
-                        <h3>
-                            <span class="no">Etterprøvbar konstruksjon</span>
-                            <span class="en">Verifiable construction</span>
-                        </h3>
-                        <p>
-                            <span class="no">Når krav til lus, rømming og utslipp skjerpes, øker verdien av løsninger som kan prosjekteres, beregnes og verifiseres mot tydelige egenskaper.</span>
-                            <span class="en">As requirements for lice control, escape prevention and emissions tighten, systems that can be engineered, calculated and verified against clear properties become more valuable.</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="why-proof">
-                    <strong><span class="no">Produktlogikk</span><span class="en">Product logic</span></strong>
-                    <span class="no">Slamoppsamling, stiv PE100-konstruksjon og ekstra fysisk rømmingssikring er del av samme systemtenkning.</span>
-                    <span class="en">Sludge collection, rigid PE100 construction and additional physical escape prevention are part of the same system logic.</span>
-                </div>
-            </article>
-
-            <article class="why-insight-row">
-                <div class="why-signal">
-                    <div class="why-signal-label">
-                        <span class="no">Investeringscase</span><span class="en">Investment case</span>
-                    </div>
-                    <div class="why-signal-title">
-                        <span class="no">Lukket teknologi må kunne realiseres</span>
-                        <span class="en">Closed technology must be realizable</span>
-                    </div>
-                </div>
-                <div class="why-response">
-                    <svg class="why-diagram" viewBox="0 0 120 92" aria-hidden="true">
-                        <path class="soft" d="M18 70h84"/>
-                        <path d="M25 66V28l19-10 19 10v38"/>
-                        <path d="M63 66V32l18-9 18 9v34"/>
-                        <path d="M32 38h24M32 50h24M70 42h22M70 54h22"/>
-                        <circle class="fill-soft" cx="88" cy="22" r="6"/>
-                    </svg>
-                    <div>
-                        <h3>
-                            <span class="no">Kjent utstyr, enkel byggemetode og trinnvis innfasing</span>
-                            <span class="en">Known equipment, simple build method and stepwise deployment</span>
-                        </h3>
-                        <p>
-                            <span class="no">Mange lukkede konsepter blir krevende å finansiere eller skalere. Folkemerden er tenkt som en mer jordnær vei inn i lukket produksjon, med fleksible størrelser og integrering mot eksisterende drift.</span>
-                            <span class="en">Many closed-containment concepts become difficult to finance or scale. Folkemerden is conceived as a more grounded path into closed production, with flexible sizes and integration with existing operations.</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="why-proof">
-                    <strong><span class="no">Produktlogikk</span><span class="en">Product logic</span></strong>
-                    <span class="no">Termoplast, sveiste plater/stendere og innmontering av utprøvd kvalitetsutstyr peker mot industriell gjennomføring.</span>
-                    <span class="en">Thermoplastic, welded plates/stiffeners and integration of proven quality equipment point toward industrial execution.</span>
-                </div>
-            </article>
-        </div>
-
-        <div class="position-line rounded-2xl px-6 py-6 text-center">
-            <p class="text-xl font-extrabold leading-relaxed mx-auto" style="color:var(--text-1); max-width:860px;">
-                <span class="no">Folkemerden forsøker ikke å flytte oppdrettet bort fra sjøen. Den gir sjøbasert oppdrett et mer kontrollert skall.</span>
-                <span class="en">Folkemerden does not try to move aquaculture away from the sea. It gives sea-based farming a more controlled shell.</span>
-            </p>
         </div>
     </div>
 </section>
@@ -1455,8 +1460,10 @@
             </div>
 
             <div class="card" style="background:var(--bg-2);">
-                <div class="w-14 h-14 rounded-2xl flex items-center justify-center text-xl font-black mb-6"
-                     style="background:var(--accent); color:#fff;">OK</div>
+                <img src="assets/olav-headshot.jpg"
+                     alt="Olav Klungreseth"
+                     class="w-20 h-20 rounded-full object-cover object-top mb-6"
+                     style="border:2px solid var(--border-a);">
                 <h3 class="text-2xl font-bold text-white mb-1">Olav Klungreseth</h3>
                 <p class="text-sm font-semibold mb-5" style="color:var(--accent);">
                     <span class="no">Sivilingeniør &mdash; Styreleder, Havklu AS</span>
@@ -1519,8 +1526,10 @@
 
         <div class="rounded-2xl p-8" style="background:var(--bg-3); border:1px solid var(--border);">
             <div class="flex items-center gap-4 mb-7 pb-7" style="border-bottom:1px solid var(--border);">
-                <div class="w-14 h-14 rounded-xl flex items-center justify-center text-xl font-black flex-shrink-0"
-                     style="background:var(--accent); color:#fff;">OK</div>
+                <img src="assets/olav-headshot.jpg"
+                     alt="Olav Klungreseth"
+                     class="w-14 h-14 rounded-full object-cover object-top flex-shrink-0"
+                     style="border:2px solid var(--border-a);">
                 <div>
                     <div class="font-bold text-white text-lg">Olav Klungreseth</div>
                     <div class="text-sm font-semibold" style="color:var(--accent);">
