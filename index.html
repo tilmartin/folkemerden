@@ -152,7 +152,7 @@
         .light-sec .card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(14,165,183,.12); }
         .light-sec .img-frame { background: #e8f2f8; border-color: #cde3ef; }
 
-        /* ── Why now: controlled interface equation ── */
+        /* ── Why now: sea control equation ── */
         .why-momentum {
             position: relative;
             overflow: hidden;
@@ -295,39 +295,9 @@
         .why-result p {
             color: rgba(237,244,249,.82);
         }
-        .why-market-strip {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1px;
-            overflow: hidden;
-            max-width: 880px;
-            margin: 1.8rem auto 0;
-            border: 1px solid rgba(14,165,183,.18);
-            border-radius: 18px;
-            background: rgba(14,165,183,.16);
-        }
-        .why-market-item {
-            background: rgba(255,255,255,.68);
-            padding: 1rem 1.1rem;
-        }
-        .why-market-item strong {
-            display: block;
-            color: var(--accent);
-            font-size: .72rem;
-            font-weight: 950;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-            margin-bottom: .35rem;
-        }
-        .why-market-item p {
-            color: var(--text-2);
-            font-size: .86rem;
-            font-weight: 700;
-            line-height: 1.45;
-        }
         .why-payoff {
             max-width: 980px;
-            margin: 2rem auto 0;
+            margin: 2.1rem auto 0;
             border: 1px solid rgba(14,165,183,.2);
             border-radius: 22px;
             background: linear-gradient(135deg, rgba(255,255,255,.74), rgba(236,249,251,.68));
@@ -352,9 +322,6 @@
         }
 
         @media (max-width: 768px) {
-            .why-market-strip {
-                grid-template-columns: 1fr;
-            }
             .why-headline {
                 letter-spacing: -.05em;
             }
@@ -805,12 +772,12 @@
                 <span class="en">THE MARKET IS MOVING</span>
             </span>
             <h2 class="why-headline text-white mb-6">
-                <span class="no">Ikke bort fra sjøen.<br>Kontroll på grensesnittet.</span>
-                <span class="en">Not away from the sea.<br>Control at the interface.</span>
+                <span class="no">Ikke bort fra sjøen.<br>Mer kontroll i sjø.</span>
+                <span class="en">Not away from the sea.<br>More control at sea.</span>
             </h2>
             <p class="text-lg leading-relaxed mx-auto" style="color:var(--text-2); max-width:800px;">
-                <span class="no">Sjøen gir oppdrettet store fortrinn: volum, vann, etablerte lokaliteter og kjent drift. Utfordringen er den åpne eksponeringen mellom fisk og omgivelser. Folkemerden er utviklet for å beholde sjøens fortrinn &mdash; og kontrollere det som må kontrolleres.</span>
-                <span class="en">The sea gives aquaculture major advantages: water volume, existing sites and familiar operations. The challenge is the open exposure between fish and surroundings. Folkemerden is designed to keep the advantages of sea-based farming &mdash; while controlling what needs to be controlled.</span>
+                <span class="no">Sjøen gir oppdrettet store fordeler: vannvolum, etablerte lokaliteter og kjent drift. Utfordringen er at åpne merder gir for liten kontroll på lus, smittepress, rømming og utslipp. Folkemerden er utviklet for å beholde sjøens fordeler - og gi produksjonen mer kontroll.</span>
+                <span class="en">The sea offers major advantages for aquaculture: water volume, existing sites and familiar operations. The challenge is that open net pens provide too little control over lice pressure, disease exposure, escapes and emissions. Folkemerden is designed to keep the advantages of sea-based farming - while giving production more control.</span>
             </p>
         </div>
 
@@ -823,7 +790,7 @@
                     <path d="M25 34V18m11 20V12m11 22V21"/>
                 </svg>
                 <div>
-                    <h3><span class="no">Sjøens fortrinn</span><span class="en">The sea's advantages</span></h3>
+                    <h3><span class="no">Sjøens fordeler</span><span class="en">The sea's advantages</span></h3>
                     <p>
                         <span class="no">Naturlig vannvolum, etablerte lokaliteter og kjent drift.</span>
                         <span class="en">Natural water volume, existing sites and familiar operations.</span>
@@ -840,10 +807,10 @@
                     <path d="M58 13v51"/>
                 </svg>
                 <div>
-                    <h3><span class="no">Kontrollert grensesnitt</span><span class="en">Controlled interface</span></h3>
+                    <h3><span class="no">Mer kontroll</span><span class="en">More control</span></h3>
                     <p>
-                        <span class="no">Tett barriere, kontrollert vanninntak, slamoppsamling og rømmingssikring.</span>
-                        <span class="en">Tight barrier, controlled water intake, sludge collection and escape prevention.</span>
+                        <span class="no">Bedre skjerming mot lus, smittepress, rømming og utslipp.</span>
+                        <span class="en">Better shielding from lice pressure, disease exposure, escapes and emissions.</span>
                     </p>
                 </div>
             </article>
@@ -857,10 +824,10 @@
                     <path d="M20 64h56"/>
                 </svg>
                 <div>
-                    <h3><span class="no">Industriell byggbarhet</span><span class="en">Industrial buildability</span></h3>
+                    <h3><span class="no">Byggbar løsning</span><span class="en">Buildable solution</span></h3>
                     <p>
-                        <span class="no">Termoplast, sveisbar konstruksjon, kjent utstyr og trinnvis innfasing.</span>
-                        <span class="en">Thermoplastic, weldable construction, known equipment and stepwise deployment.</span>
+                        <span class="no">Termoplast, enkel byggemetode, kjent utstyr og trinnvis innfasing.</span>
+                        <span class="en">Thermoplastic, simple construction method, known equipment and stepwise deployment.</span>
                     </p>
                 </div>
             </article>
@@ -884,27 +851,10 @@
             </article>
         </div>
 
-        <div class="why-market-strip" aria-label="Markedssignaler">
-            <div class="why-market-item">
-                <strong><span class="no">Norge</span><span class="en">Norway</span></strong>
-                <p>
-                    <span class="no">Lukkede, verifiserbare produksjonsenheter får økende regulatorisk verdi.</span>
-                    <span class="en">Closed, verifiable production units are gaining regulatory value.</span>
-                </p>
-            </div>
-            <div class="why-market-item">
-                <strong>British Columbia</strong>
-                <p>
-                    <span class="no">Åpne net-pen-anlegg fases ut innen 2029.</span>
-                    <span class="en">Open net-pen facilities are being phased out by 2029.</span>
-                </p>
-            </div>
-        </div>
-
         <div class="why-payoff rounded-2xl px-6 py-6 text-center">
             <p class="text-xl font-extrabold leading-relaxed mx-auto" style="color:var(--text-1); max-width:900px;">
-                <span class="no">Folkemerden forsøker å gi oppdrettsnæringen det den trenger nå: mer kontroll &mdash; uten å gi opp sjøens fortrinn.</span>
-                <span class="en">Folkemerden aims to give the industry what it needs now: more control &mdash; without giving up the advantages of the sea.</span>
+                <span class="no">Folkemerden er utviklet for å gi oppdrettsnæringen det den trenger nå: mer kontroll - uten å gi opp sjøens fordeler.</span>
+                <span class="en">Folkemerden is designed to give the industry what it needs now: more control - without giving up the advantages of the sea.</span>
             </p>
         </div>
     </div>
@@ -1459,20 +1409,22 @@
                 </div>
             </div>
 
-            <div class="card" style="background:var(--bg-2);">
+            <div class="card flex gap-6 items-stretch" style="background:var(--bg-2); padding:0; overflow:hidden;">
+                <div class="flex-1 p-7 flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold text-white mb-1">Olav Klungreseth</h3>
+                    <p class="text-sm font-semibold mb-5" style="color:var(--accent);">
+                        <span class="no">Sivilingeniør &mdash; Styreleder, Havklu AS</span>
+                        <span class="en">Civil engineer &mdash; Chairman, Havklu AS</span>
+                    </p>
+                    <p class="text-base leading-relaxed" style="color:var(--text-2);">
+                        <span class="no">Med tiår med erfaring innen konstruksjon av oppdrettsanlegg og marin teknologi har Olav utviklet Folkemerden som et svar på industriens mest presserende utfordringer. Han er tilgjengelig for tekniske samtaler og partnerdialoger.</span>
+                        <span class="en">With decades of experience in aquaculture construction and marine technology, Olav developed Folkemerden as an answer to the industry's most pressing challenges. He is available for technical discussions and partner dialogues.</span>
+                    </p>
+                </div>
                 <img src="assets/olav-headshot.jpg"
                      alt="Olav Klungreseth"
-                     class="w-20 h-20 rounded-full object-cover object-top mb-6"
-                     style="border:2px solid var(--border-a);">
-                <h3 class="text-2xl font-bold text-white mb-1">Olav Klungreseth</h3>
-                <p class="text-sm font-semibold mb-5" style="color:var(--accent);">
-                    <span class="no">Sivilingeniør &mdash; Styreleder, Havklu AS</span>
-                    <span class="en">Civil engineer &mdash; Chairman, Havklu AS</span>
-                </p>
-                <p class="text-base leading-relaxed" style="color:var(--text-2);">
-                    <span class="no">Med tiår med erfaring innen konstruksjon av oppdrettsanlegg og marin teknologi har Olav utviklet Folkemerden som et svar på industriens mest presserende utfordringer. Han er tilgjengelig for tekniske samtaler og partnerdialoger.</span>
-                    <span class="en">With decades of experience in aquaculture construction and marine technology, Olav developed Folkemerden as an answer to the industry's most pressing challenges. He is available for technical discussions and partner dialogues.</span>
-                </p>
+                     class="w-44 object-cover object-top flex-shrink-0"
+                     style="border-radius: 0 16px 16px 0;">
             </div>
         </div>
     </div>
