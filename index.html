@@ -508,6 +508,19 @@
             }
             .stat .val { font-size: 1.55rem; }
             .stat .sub { font-size: .68rem; }
+            .pilot-tag {
+                padding: 4px 8px;
+                font-size: .56rem;
+                letter-spacing: .1em;
+            }
+            .pilot-tag--folk {
+                left: 50%;
+                bottom: 5%;
+            }
+            .pilot-tag--nets {
+                left: 50%;
+                top: 41%;
+            }
         }
 
         /* ── Process steps ── */
@@ -531,6 +544,22 @@
 
         /* ── Image frame ── */
         .img-frame { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: var(--bg-3); }
+        .solution-semi-frame {
+            background: #fff !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .solution-semi-frame img {
+            width: 100%;
+            height: 100%;
+            min-height: 150px;
+            object-fit: contain;
+            object-position: center;
+            transform: scale(1.12);
+            transform-origin: center;
+            background: #fff;
+        }
         .solution-cutout-frame {
             background: #fff !important;
             display: flex;
@@ -543,6 +572,49 @@
             min-height: 150px;
             object-fit: contain;
             background: #fff;
+        }
+        .pilot-annotated-frame {
+            position: relative;
+            max-height: 400px;
+        }
+        .pilot-annotated-frame > img {
+            display: block;
+            width: 100%;
+            max-height: 400px;
+        }
+        .pilot-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        .pilot-tag {
+            position: absolute;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 10px;
+            border-radius: 999px;
+            font-size: .62rem;
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(237,244,249,.78);
+            background: rgba(3,14,26,.34);
+            border: 1px solid rgba(185,243,239,.12);
+            box-shadow: 0 8px 18px rgba(0,0,0,.12);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .pilot-tag--folk {
+            left: 50%;
+            bottom: 7%;
+            transform: translateX(-50%);
+        }
+        .pilot-tag--nets {
+            left: 50%;
+            top: 44%;
+            transform: translateX(-50%);
         }
 
         /* ── prefers-reduced-motion ── */
@@ -674,8 +746,8 @@
                             <span class="cbadge-title en">Tight barrier</span>
                         </div>
                         <div class="cbadge-val">
-                            <span class="no">Lukket PE100-vegg</span>
-                            <span class="en">Closed PE100 wall</span>
+                            <span class="no">Lukket dobbel PE100-vegg</span>
+                            <span class="en">Closed double PE100 wall</span>
                         </div>
                     </div>
 
@@ -687,8 +759,8 @@
                             <span class="cbadge-title en">Escape prevention</span>
                         </div>
                         <div class="cbadge-val">
-                            <span class="no">Stiv PE100-konstruksjon</span>
-                            <span class="en">Rigid PE100 structure</span>
+                            <span class="no">Stiv dobbel PE100-konstruksjon</span>
+                            <span class="en">Rigid double PE100 structure</span>
                         </div>
                     </div>
 
@@ -794,8 +866,8 @@
                 <span class="en">Not away from the sea.<br>More control at sea.</span>
             </h2>
             <p class="text-lg leading-relaxed mx-auto" style="color:var(--text-2); max-width:800px;">
-                <span class="no">Sjøen gir oppdrettet store fortrinn: vannvolum, etablerte lokaliteter og kjent drift. Utfordringen er at åpne merder gir for liten kontroll på lus, smittepress, rømming og utslipp. Folkemerden er utviklet for å beholde sjøens fortrinn - og gi produksjonen mer kontroll.</span>
-                <span class="en">The sea offers major advantages for aquaculture: water volume, existing sites and familiar operations. The challenge is that open net pens provide too little control over lice pressure, disease exposure, escapes and emissions. Folkemerden is designed to keep the advantages of sea-based farming - while giving production more control.</span>
+                <span class="no">Sjøen gir oppdrettet store fortrinn: vannvolum, etablerte lokaliteter og kjent drift. Utfordringen er at åpne merder gir for liten kontroll på lus, smittepress, rømming og utslipp. Folkemerden er utviklet for å beholde sjøens fortrinn, utnytte laksens egenskaper som vekselvarmt dyr – og gi produksjonen mer kontroll.</span>
+                <span class="en">The sea offers major advantages for aquaculture: water volume, existing sites and familiar operations. The challenge is that open net pens provide too little control over lice pressure, disease exposure, escapes and emissions. Folkemerden is designed to keep the advantages of sea-based farming, make use of salmon's characteristics as an ectothermic animal, and give production more control.</span>
             </p>
         </div>
 
@@ -916,8 +988,8 @@
                     <span class="no">Rømmingsrisiko</span><span class="en">Escape risk</span>
                 </h3>
                 <p class="text-sm leading-relaxed" style="color:var(--text-2);">
-                    <span class="no">En stiv konstruksjon i hardt materiale kan redusere rømmingsrisikoen og gi grunnlag for ekstra fysisk barriere sammenlignet med duk- og notmerder.</span>
-                    <span class="en">A rigid construction in hard material may reduce escape risk and provide a basis for enhanced physical containment compared to fabric and net cages.</span>
+                    <span class="no">En stiv konstruksjon i hardt materiale og doble vegger kan redusere rømmingsrisikoen og gi grunnlag for ekstra fysisk barriere sammenlignet med duk- og notmerder.</span>
+                    <span class="en">A rigid construction in hard material and double walls may reduce escape risk and provide a basis for enhanced physical containment compared to fabric and net cages.</span>
                 </p>
             </div>
 
@@ -1050,21 +1122,20 @@
                          style="min-height:220px; background:var(--bg-3);">
                 </div>
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="img-frame">
+                    <div class="img-frame solution-semi-frame">
                         <img src="assets/folkemerd-semi.png"
                              alt="Folkemerden semilukket variant — 3D-modell med åpen underdel og nettløsning"
-                             class="w-full object-contain"
-                             style="min-height:150px; background:var(--bg-3);">
+                             class="w-full object-contain">
                     </div>
                     <div class="img-frame solution-cutout-frame">
-                        <img src="plastcutout.png"
+                        <img src="plast1.png"
                              alt="Folkemerden lukket variant — utsnitt av plastkonstruksjon på hvit bakgrunn"
                              class="w-full object-contain">
                     </div>
                 </div>
                 <p class="text-xs text-center" style="color:var(--text-3);">
-                    <span class="no">3D-modeller av lukket og semilukket variant, sett fra ulike vinkler. Referansemodell — endelig dimensjonering avhenger av lokalitet og krav.</span>
-                    <span class="en">3D models of closed and semi-closed variants from different angles. Reference model — final dimensions subject to site conditions and requirements.</span>
+                    <span class="no">3D-modeller av lukket og semilukket Folkemerd, samt eksempel på stiv PE100-konstruksjon med sammensveisede plater og firkantrør. Endelig dimensjonering avhenger av lokalitet, strømforhold og regulatoriske krav.</span>
+                    <span class="en">3D models of the closed and semi-closed Folkemerden, along with an example of a rigid PE100 structure built from welded plates and square tubes. Final dimensioning depends on site conditions, current conditions and regulatory requirements.</span>
                 </p>
             </div>
         </div>
@@ -1236,6 +1307,23 @@
             </p>
         </div>
 
+        <div class="rounded-2xl overflow-hidden mb-10 pilot-annotated-frame">
+            <img src="assets/postsmolt.png"
+                 alt="Konseptillustrasjon av trinnvis innfasing med to lukkede enheter foran eksisterende merdstruktur"
+                 class="w-full object-cover object-center"
+                 style="max-height:400px;">
+            <div class="pilot-overlay" aria-hidden="true">
+                <div class="pilot-tag pilot-tag--folk">
+                    <span class="no">2x Folkemerder</span>
+                    <span class="en">2x Folkemerden</span>
+                </div>
+                <div class="pilot-tag pilot-tag--nets">
+                    <span class="no">6x Notmerder</span>
+                    <span class="en">6x Net pens</span>
+                </div>
+            </div>
+        </div>
+
         <div class="grid md:grid-cols-3 gap-5">
             <div class="card text-center">
                 <div class="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-4"
@@ -1319,7 +1407,7 @@
                     <span class="no">Sveisbar og kontrollerbar</span><span class="en">Weldable and inspectable</span>
                 </h3>
                 <p class="text-sm leading-relaxed" style="color:var(--text-2);">
-                    <span class="no">Plater og stendere sveises etter etablerte prosedyrer. Sveisefuger kan kontrolleres i henhold til Norsk Standard.</span>
+                    <span class="no">Plater og stendere sveises etter etablerte prosedyrer. Alternativt lages en mangekantet yttervegg av sammensveisede firkantrør. Sveisefuger kan kontrolleres i henhold til Norsk Standard.</span>
                     <span class="en">Plates and frames welded to established procedures. Weld seams can be inspected per Norwegian Standard.</span>
                 </p>
             </div>
@@ -1398,7 +1486,7 @@
                     <span class="en">Havklu AS owns the patent behind Folkemerden. The concept was developed by civil engineer Olav Klungreseth, building on more than ten years of work with large production units for sea-based aquaculture.</span>
                 </p>
                 <p class="text-lg leading-relaxed mb-8" style="color:var(--text-2);">
-                    <span class="no">Forgjengeren, Hydra-tanken/Storbåtsegga, fikk fire statlige utviklingskonsesjoner og ble bygget i stål. Folkemerden viderefører prinsippene i en enklere og mer kostnadseffektiv konstruksjon i termoplast.</span>
+                    <span class="no">Forgjengeren, Hydra-tanken/Storbåtsegga, fikk fire statlige utviklingskonsesjoner og ble bygget av stål. Den ble imidlertid overtatt av Nordlaks ASA og bygget i Tyrkia. Folkemerden viderefører de viktigste prinsippene i en enklere og mer kostnadseffektiv konstruksjon i termoplast.</span>
                     <span class="en">The predecessor, the Hydra-tank/Storbåtsegga, received four government development concessions and was built in steel. Folkemerden carries forward the principles in a simpler and more cost-effective thermoplastic construction.</span>
                 </p>
                 <div class="flex flex-wrap gap-3">

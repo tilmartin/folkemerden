@@ -15,3 +15,8 @@ logo gammel.png
 # OS
 .DS_Store
 Thumbs.db
+
+# Miljøfiler / hemmeligheter
+.env
+.env.*
+!.env.example
